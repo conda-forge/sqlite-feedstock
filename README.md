@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/sqlite-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/sqlite-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/sqlite-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/sqlite-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/sqlite-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/sqlite-feedstock/branch/master)
