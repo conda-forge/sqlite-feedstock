@@ -23,13 +23,15 @@ build:
     - vc9    # [win and py27]
     - vc10   # [win and py34]
     - vc14   # [win and py35]
-    - readline 6.3
+    - readline 6.2
 
 requirements:
   build:
     # python is for lining up vc feature (runtime)
     - python      # [win]
-    - readline 6.3
+    - readline 6.2
+  run:
+    - readline 6.2
 
 test:
   requires:

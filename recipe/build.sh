@@ -4,8 +4,6 @@ if [ `uname -m` == ppc64le ]; then
     B="--build=ppc64le-linux"
 fi
 
-#--disable-readline \
-
 ./configure $B --enable-threadsafe \
             --enable-tempstore \
             --enable-shared=yes \
