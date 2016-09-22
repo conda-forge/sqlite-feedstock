@@ -28,9 +28,9 @@ requirements:
   build:
     # python is for lining up vc feature (runtime)
     - python      # [win]
-    - readline 6.2 # [not win]
+    - readline 6.2  # [not win]
   run:
-    - readline 6.2 # [not win]
+    - readline 6.2  # [not win]
 
 test:
   requires:
