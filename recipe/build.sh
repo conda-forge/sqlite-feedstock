@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export CFLAGS="-I${PREFIX}/include ${CFLAGS}"
+export CFLAGS="-I${PREFIX}/include"
 
-export LDFLAGS="-L${PREFIX}/lib ${LDFLAGS}"
-export CPPFLAGS="-I${PREFIX}/include ${CPPFLAGS}"
+export LDFLAGS="-L${PREFIX}/lib"
+export CPPFLAGS="-I${PREFIX}/include"
 
 export DYLD_FALLBACK_LIBRARY_PATH="${PREFIX}/lib"
 export DYLD_LIBRARY_PATH="${PREFIX}/lib"
