@@ -1,4 +1,4 @@
-{% set version="3.15.0" %}
+{% set version="3.13.0" %}
 {% set year="2016" %}
 {% set version_split=version.split(".") %}
 {% set major=version_split[0] %}
@@ -13,7 +13,7 @@ package:
 source:
   fn: sqlite-autoconf-{{ version_coded }}.tar.gz
   url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-  sha256: 77162da9b4a0336d7e77d5252b690662850f62b47c12d9125f74ab9de78ded27
+  sha256: e2797026b3310c9d08bd472f6d430058c6dd139ff9d4e30289884ccd9744086b
   patches:
     - expose_symbols.patch  # [win]
 
@@ -27,9 +27,13 @@ build:
 requirements:
   build:
     # python is for lining up vc feature (runtime)
+    - gcc # [linux]
+    - llvm # [osx]
+    - zlib
     - python      # [win]
     - readline 6.2  # [not win]
   run:
+    - libgcc # [linux]
     - readline 6.2  # [not win]
 
 test:
@@ -42,18 +46,15 @@ test:
     - IF NOT EXIST %LIBRARY_BIN%\sqlite3.dll exit 1  # [win]
     - IF NOT EXIST %LIBRARY_LIB%\sqlite3.lib exit 1  # [win]
     - IF NOT EXIST %LIBRARY_INC%\sqlite3.h exit 1  # [win]
-    #- conda inspect linkages -p $PREFIX sqlite  # [not win]
-    #- conda inspect objects -p $PREFIX sqlite  # [osx]
 
 about:
   home: http://www.sqlite.org/
   license: Public-Domain (http://www.sqlite.org/copyright.html)
   license_family: Public-Domain
-  summary: 'Implements a self-contained, zero-configuration, SQL database engine.'
+  summary: implements a self-contained, zero-configuration, SQL database engine
 
 extra:
   recipe-maintainers:
     - jakirkham
     - jjhelmus
     - msarahan
-    - ocefpaf
