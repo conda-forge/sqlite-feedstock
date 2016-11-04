@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PATH=${PREFIX}/bin:$PATH
 export CFLAGS="-I${PREFIX}/include"
 
 export LDFLAGS="-L${PREFIX}/lib"
@@ -18,6 +19,12 @@ fi
             --enable-shared=yes \
             --disable-tcl \
             --prefix=$PREFIX
+
+
+cp ${RECIPE_DIR}/Makefile.patch ./Makefile.patch
+
+patch < Makefile.patch
+
 make
 make check
 make install
