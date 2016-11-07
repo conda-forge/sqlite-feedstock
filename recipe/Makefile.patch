@@ -1,0 +1,17 @@
+--- Makefile	2016-11-04 05:21:42.459404538 +0000
++++ Makefile	2016-11-04 05:24:49.406201212 +0000
+@@ -14,9 +14,11 @@
+ 
+ 
+ 
+-
+-
+-
++# Documentation from here
++# https://www.sqlite.org/cvstrac/wiki?p=ReadLine
++# To add readline support
++READLINE_FLAGS = -DHAVE_READLINE=1 -I$(PREFIX)/include/readline
++LIBREADLINE = -lreadline
+ 
+ am__is_gnu_make = { \
+   if test -z '$(MAKELEVEL)'; then \
