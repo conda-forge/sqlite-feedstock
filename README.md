@@ -7,7 +7,7 @@ Package license: Public-Domain (http://www.sqlite.org/copyright.html)
 
 Feedstock license: BSD 3-Clause
 
-Summary: Implements a self-contained, zero-configuration, SQL database engine.
+Summary: implements a self-contained, zero-configuration, SQL database engine
 
 
 
@@ -26,19 +26,19 @@ Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/sqlite/bad
 Installing sqlite
 =================
 
-Installing `sqlite` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing sqlite from the conda-forge channel can be achieved by adding conda-forge to your channels with:
 
 ```
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `sqlite` can be installed with:
+Once the conda-forge channel has been enabled, sqlite can be installed with:
 
 ```
 conda install sqlite
 ```
 
-It is possible to list all of the versions of `sqlite` available on your platform with:
+It is possible to list all of the versions of sqlite available on your platform with:
 
 ```
 conda search sqlite --channel conda-forge
@@ -63,8 +63,8 @@ packages to the [conda-forge](https://anaconda.org/conda-forge)
 
 To manage the continuous integration and simplify feedstock maintenance
 [conda-smithy](http://github.com/conda-forge/conda-smithy) has been developed.
-Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
-this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
+Using the ``conda-forge.yml`` within this repository, it is possible to regenerate all of
+this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy regenerate``.
 
 
 Terminology
