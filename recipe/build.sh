@@ -1,18 +1,21 @@
 #!/bin/bash
 
-if [ `uname -m` == ppc64le ]; then
-    B="--build=ppc64le-linux"
+export LDFLAGS="-L${PREFIX}/lib $LDFLAGS"
+export CPPFLAGS="-I${PREFIX}/include -I$PREFIX/include/readline $CPPFLAGS"
+export CFLAGS="-I${PREFIX}/include -I$PREFIX/include/readline $CFLAGS"
+
+if [ $(uname -m) == ppc64le ]; then
+    export B="--build=ppc64le-linux"
 fi
 
 ./configure $B --enable-threadsafe \
             --enable-json1 \
             --enable-tempstore \
             --enable-shared=yes \
+            --enable-readline \
             --disable-tcl \
-            --disable-readline \
             --prefix=$PREFIX
+
 make
 make check
 make install
-
-rm -rf  $PREFIX/share
