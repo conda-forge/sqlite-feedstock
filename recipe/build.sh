@@ -5,6 +5,7 @@ if [ `uname -m` == ppc64le ]; then
 fi
 
 ./configure $B --enable-threadsafe \
+            --enable-json1 \
             --enable-tempstore \
             --enable-shared=yes \
             --disable-tcl \

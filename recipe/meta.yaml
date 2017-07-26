@@ -18,29 +18,32 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
+  skip: True  # [win and py36]
   features:
-    - vc9    # [win and py27]
-    - vc10   # [win and py34]
-    - vc14   # [win and py35]
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
-    # python is for lining up vc feature (runtime)
     - python      # [win]
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and (py35 or py36)]
+  run:
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and (py35 or py36)]
 
 test:
-  requires:
-    - python  2.7*     # [win and py27]
-    - python  3.4*     # [win and py34]
-    - python  3.5*     # [win and py35]
   commands:
     - sqlite3 --version
     - IF NOT EXIST %LIBRARY_BIN%\sqlite3.dll exit 1  # [win]
     - IF NOT EXIST %LIBRARY_LIB%\sqlite3.lib exit 1  # [win]
     - IF NOT EXIST %LIBRARY_INC%\sqlite3.h exit 1  # [win]
-    #- conda inspect linkages -p $PREFIX sqlite  # [not win]
-    #- conda inspect objects -p $PREFIX sqlite  # [osx]
+    - conda inspect linkages -p $PREFIX sqlite  # [not win]
+    - conda inspect objects -p $PREFIX sqlite  # [osx]
 
 about:
   home: http://www.sqlite.org/
