@@ -8,7 +8,8 @@ if [ $(uname -m) == ppc64le ]; then
     export B="--build=ppc64le-linux"
 fi
 
-./configure $B --enable-threadsafe \
+./configure SQLITE_ENABLE_RTREE=1 \
+            $B --enable-threadsafe \
             --enable-json1 \
             --enable-tempstore \
             --enable-shared=yes \
