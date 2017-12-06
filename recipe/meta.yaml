@@ -1,4 +1,4 @@
-{% set version="3.19.3" %}
+{% set version="3.20.1" %}
 
 package:
   name: sqlite
@@ -11,24 +11,21 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
-    - vc10  # [win and py34]
     - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
     - python  # [win]
-    - readline 6.2*  # [not win]
+    - readline 7.0  # [not win]
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and (py35 or py36)]
   run:
-    - readline 6.2*  # [not win]
+    - readline 7.0  # [not win]
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and (py35 or py36)]
 
 test:
@@ -37,8 +34,8 @@ test:
     - if not exist %LIBRARY_BIN%\sqlite3.dll exit 1  # [win]
     - if not exist %LIBRARY_LIB%\sqlite3.lib exit 1  # [win]
     - if not exist %LIBRARY_INC%\sqlite3.h exit 1  # [win]
-    - conda inspect linkages -p $PREFIX sqlite  # [not win]
-    - conda inspect objects -p $PREFIX sqlite  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://www.sqlite.org/
