@@ -15,7 +15,7 @@ fi
             --enable-shared=yes \
             --enable-readline \
             --disable-tcl \
-            --prefix=$PREFIX
+            --prefix="${PREFIX}"
 
 make
 make check
