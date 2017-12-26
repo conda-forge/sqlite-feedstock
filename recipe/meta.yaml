@@ -20,10 +20,12 @@ build:
 requirements:
   build:
     - python        # [win]
+    - ncurses 5.9   # [not win]
     - readline 7.0  # [not win]
     - vc 9          # [win and py27]
     - vc 14         # [win and (py35 or py36)]
   run:
+    - ncurses 5.9   # [not win]
     - readline 7.0  # [not win]
     - vc 9          # [win and py27]
     - vc 14         # [win and (py35 or py36)]
