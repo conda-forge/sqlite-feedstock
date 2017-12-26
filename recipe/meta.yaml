@@ -19,14 +19,14 @@ build:
 
 requirements:
   build:
-    - python  # [win]
+    - python        # [win]
     - readline 7.0  # [not win]
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - vc 9          # [win and py27]
+    - vc 14         # [win and (py35 or py36)]
   run:
     - readline 7.0  # [not win]
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - vc 9          # [win and py27]
+    - vc 14         # [win and (py35 or py36)]
 
 test:
   commands:
