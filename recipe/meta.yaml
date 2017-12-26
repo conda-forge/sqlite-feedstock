@@ -20,6 +20,7 @@ build:
 requirements:
   build:
     - toolchain
+    - pkg-config    # [not win]
     - python        # [win]
     - ncurses 5.9   # [not win]
     - readline 7.0  # [not win]

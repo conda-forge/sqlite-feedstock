@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export LDFLAGS="$LDFLAGS $(pkg-config --libs ncurses)"
 export CPPFLAGS="$CPPFLAGS -I$PREFIX/include/readline -I$PREFIX/include/ncurses"
 export CFLAGS="$CFLAGS -I$PREFIX/include/readline -I$PREFIX/include/ncurses"
 
