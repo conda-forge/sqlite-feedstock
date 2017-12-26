@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export LDFLAGS="-L${PREFIX}/lib $LDFLAGS"
-export CPPFLAGS="-I${PREFIX}/include -I$PREFIX/include/readline $CPPFLAGS"
-export CFLAGS="-I${PREFIX}/include -I$PREFIX/include/readline $CFLAGS"
+export LDFLAGS="$LDFLAGS $(pkg-config --libs ncurses readline)"
+export CPPFLAGS="$CPPFLAGS $(pkg-config --cflags-only-I ncurses readline)"
+export CFLAGS="$CFLAGS $(pkg-config --cflags-only-I ncurses readline)"
 
 if [ $(uname -m) == ppc64le ]; then
     export B="--build=ppc64le-linux"
@@ -14,8 +14,9 @@ fi
             --enable-tempstore \
             --enable-shared=yes \
             --enable-readline \
+            --disable-editline \
             --disable-tcl \
-            --prefix=$PREFIX
+            --prefix="${PREFIX}"
 
 make
 make check
