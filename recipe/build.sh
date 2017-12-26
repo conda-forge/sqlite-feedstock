@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export CPPFLAGS="$CPPFLAGS -I$PREFIX/include/readline"
-export CFLAGS="$CFLAGS -I$PREFIX/include/readline"
+export CPPFLAGS="$CPPFLAGS -I$PREFIX/include/readline -I$PREFIX/include/ncurses"
+export CFLAGS="$CFLAGS -I$PREFIX/include/readline -I$PREFIX/include/ncurses"
 
 if [ $(uname -m) == ppc64le ]; then
     export B="--build=ppc64le-linux"
