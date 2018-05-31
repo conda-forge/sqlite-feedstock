@@ -1,5 +1,8 @@
-{% set version="3.22.0" %}
-{% set ver = version.replace(".", "") + "000" %}
+{% set version = "3.23.1" %}
+{% set ver_major = version.split(".")[0] %}
+{% set ver_minor = version.split(".")[1] %}
+{% set ver_patch = version.split(".")[2] %}
+{% set ver = "".join([ver_major, ver_minor.ljust(3, "0"), ver_patch.ljust(3, "0")]) %}
 
 package:
   name: sqlite
@@ -7,7 +10,7 @@ package:
 
 source:
   url: https://www.sqlite.org/2018/sqlite-autoconf-{{ ver }}.tar.gz
-  sha256: 2824ab1238b706bc66127320afbdffb096361130e23291f26928a027b885c612
+  sha256: 92842b283e5e744eff5da29ed3c69391de7368fccc4d0ee6bf62490ce555ef25
   patches:
     - expose_symbols.patch  # [win]
 
