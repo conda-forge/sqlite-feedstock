@@ -3,14 +3,14 @@
 {% set ver_major = version.split(".")[0] %}
 {% set ver_minor = version.split(".")[1] %}
 {% set ver_patch = version.split(".")[2] %}
-{% set ver = "".join([ver_major, ver_minor.ljust(3, "0"), ver_patch.ljust(3, "0")]) %}
+{% set ver_url = "".join([ver_major, ver_minor.ljust(3, "0"), ver_patch.ljust(3, "0")]) %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://www.sqlite.org/2018/{{ name }}-autoconf-{{ ver }}.tar.gz
+  url: https://www.sqlite.org/2018/{{ name }}-autoconf-{{ ver_url }}.tar.gz
   sha256: 92842b283e5e744eff5da29ed3c69391de7368fccc4d0ee6bf62490ce555ef25
   patches:
     - expose_symbols.patch  # [win]
@@ -38,8 +38,6 @@ test:
     - test -f $PREFIX/lib/libsqlite3.so                        # [linux]
     - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
     - test -f $PREFIX/include/sqlite3.h                        # [not win]
-    - conda inspect linkages -p $PREFIX $PKG_NAME              # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME               # [osx]
 
 about:
   home: http://www.sqlite.org/
