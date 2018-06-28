@@ -21,8 +21,8 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-  host:
     - pkg-config    # [not win]
+  host:
     - ncurses 5.9   # [not win]
     - readline 7.0  # [not win]
   run:
