@@ -1,46 +1,43 @@
-{% set version="3.22.0" %}
-{% set ver = version.replace(".", "") + "000" %}
+{% set name = "sqlite" %}
+{% set version = "3.23.1" %}
+{% set ver_major = version.split(".")[0] %}
+{% set ver_minor = version.split(".")[1] %}
+{% set ver_patch = version.split(".")[2] %}
+{% set ver_url = "".join([ver_major, ver_minor.ljust(3, "0"), ver_patch.ljust(3, "0")]) %}
 
 package:
-  name: sqlite
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://www.sqlite.org/2018/sqlite-autoconf-{{ ver }}.tar.gz
-  sha256: 2824ab1238b706bc66127320afbdffb096361130e23291f26928a027b885c612
+  url: https://www.sqlite.org/2018/{{ name }}-autoconf-{{ ver_url }}.tar.gz
+  sha256: 92842b283e5e744eff5da29ed3c69391de7368fccc4d0ee6bf62490ce555ef25
   patches:
     - expose_symbols.patch  # [win]
 
 build:
   number: 0
-  skip: True  # [win and py36]
-  features:
-    - vc9  # [win and py27]
-    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('cxx') }}
+  host:
     - pkg-config    # [not win]
-    - python        # [win]
     - ncurses 5.9   # [not win]
     - readline 7.0  # [not win]
-    - vc 9          # [win and py27]
-    - vc 14         # [win and (py35 or py36)]
   run:
     - ncurses 5.9   # [not win]
     - readline 7.0  # [not win]
-    - vc 9          # [win and py27]
-    - vc 14         # [win and (py35 or py36)]
 
 test:
   commands:
     - sqlite3 --version
-    - if not exist %LIBRARY_BIN%\sqlite3.dll exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\sqlite3.lib exit 1  # [win]
-    - if not exist %LIBRARY_INC%\sqlite3.h exit 1  # [win]
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+    - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1    # [win]
+    - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1    # [win]
+    - test -f $PREFIX/lib/libsqlite3.dylib                     # [osx]
+    - test -f $PREFIX/lib/libsqlite3.so                        # [linux]
+    - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
+    - test -f $PREFIX/include/sqlite3.h                        # [not win]
 
 about:
   home: http://www.sqlite.org/
