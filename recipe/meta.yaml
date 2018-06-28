@@ -21,13 +21,13 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - pkg-config    # [not win]
+    - pkg-config             # [not win]
   host:
-    - ncurses 5.9   # [not win]
-    - readline 7.0  # [not win]
+    - ncurses                # [not win]
+    - readline               # [not win]
   run:
-    - ncurses 5.9   # [not win]
-    - readline 7.0  # [not win]
+    - ncurses                # [not win]
+    - readline               # [not win]
 
 test:
   commands:
