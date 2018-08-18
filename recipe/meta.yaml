@@ -16,7 +16,7 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -24,10 +24,10 @@ requirements:
     - pkg-config             # [not win]
   host:
     - ncurses                # [not win]
-    - readline               # [not win]
+    - libedit                # [not win]
   run:
     - ncurses                # [not win]
-    - readline               # [not win]
+    - libedit                # [not win]
 
 test:
   commands:
