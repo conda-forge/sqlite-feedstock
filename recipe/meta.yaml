@@ -57,8 +57,8 @@ outputs:
       - Library/bin/sqlite3.exe   # [win]
     requirements:
       run:
-        - libsqlite =={{ version }}
-        - readline
+        - libsqlite {{ version }}
+        - readline   # [notwin]
     test:
       commands:
         - sqlite3 --version
