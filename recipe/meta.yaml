@@ -57,7 +57,7 @@ outputs:
       - Library/bin/sqlite3.exe   # [win]
     requirements:
       run:
-        - libsqlite {{ version }}
+        - {{ pin_subpackage("libsqlite", exact=true) }}
         - readline   # [notwin]
     test:
       commands:
