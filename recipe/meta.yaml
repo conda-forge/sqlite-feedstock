@@ -64,7 +64,7 @@ outputs:
         - sqlite3 --version
     about:
       home: http://www.sqlite.org/
-      license: GPLv3  # [not win]
+      license: GPL-3.0  # [not win]
       license: Public-Domain (http://www.sqlite.org/copyright.html)  # [win]
       summary: 'Implements a self-contained, zero-configuration, SQL database engine.'
 
