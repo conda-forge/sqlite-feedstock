@@ -27,16 +27,19 @@ requirements:
     - readline               # [not win]
 
 
+# By compiling with readline, the /bin/sqlite3 executable becomes
+# subject to the GPL
+# Therefore, we decide to split it to make it clear
+# That the other software is not.
 outputs:
   - name: libsqlite
     files:
-      - include/sqlite3*          # [not win]
-      - share/man/man1/sqlite3*   # [not win]
-      - lib/libsqlite3*           # [not win]
-      - lib/pkgconfig/sqlite3.pc  # [not win]
-      - Library/lib/sqlite3*      # [win]
-      - Library/include/sqlite3*  # [win]
-      - Library/bin/sqlite3.dll   # [win]
+      - lib                      # [not win]
+      - share                    # [not win]
+      - include                  # [not win]
+      - Library/lib/             # [win]
+      - Library/include/         # [win]
+      - Library/bin/sqlite3.dll  # [win]
     requirements:
       - ncurses                   # [notwin]
     test:
