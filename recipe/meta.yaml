@@ -70,7 +70,7 @@ outputs:
 
 about:
   home: http://www.sqlite.org/
-  license: GPLv3 or Public Domain
+  license: GPL-3.0 (unix exe) and Public-Domain (other)
   summary: 'Implements a self-contained, zero-configuration, SQL database engine.'
 
 extra:
