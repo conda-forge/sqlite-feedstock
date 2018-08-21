@@ -33,6 +33,9 @@ outputs:
     requirements:
       host:
         - ncurses                # [not win]
+        # While readline isn't necessary to run
+        # It is necessary to trick `make` into thinking
+        # nothing has changed and not to attempt to recompile
         - readline               # [not win]
       run:
         - ncurses   # [not win]
