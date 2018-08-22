@@ -7,7 +7,7 @@ Package license: Public-Domain (http://www.sqlite.org/copyright.html)
 
 Feedstock license: BSD 3-Clause
 
-Summary: Implements a self-contained, zero-configuration, SQL database engine.
+Summary: Library for implementing a self-contained, zero-configuration, SQL database engine.
 
 
 
@@ -23,6 +23,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libsqlite-green.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sqlite-green.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) |
 
 Installing sqlite
@@ -34,16 +35,16 @@ Installing `sqlite` from the `conda-forge` channel can be achieved by adding `co
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `sqlite` can be installed with:
+Once the `conda-forge` channel has been enabled, `libsqlite, sqlite` can be installed with:
 
 ```
-conda install sqlite
+conda install libsqlite sqlite
 ```
 
-It is possible to list all of the versions of `sqlite` available on your platform with:
+It is possible to list all of the versions of `libsqlite` available on your platform with:
 
 ```
-conda search sqlite --channel conda-forge
+conda search libsqlite --channel conda-forge
 ```
 
 
