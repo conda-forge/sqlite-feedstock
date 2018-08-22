@@ -55,9 +55,6 @@ outputs:
     script: install_bin.sh   # [not win]
     script: install_bin.bat  # [win]
     requirements:
-      host:
-        - ncurses                # [not win]
-        - readline               # [not win]
       run:
         - {{ pin_subpackage("libsqlite", exact=true) }}
         - readline  # [notwin]
