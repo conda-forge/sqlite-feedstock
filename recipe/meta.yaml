@@ -16,7 +16,7 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -25,19 +25,49 @@ requirements:
   host:
     - ncurses                # [not win]
     - readline               # [not win]
-  run:
-    - ncurses                # [not win]
-    - readline               # [not win]
 
-test:
-  commands:
-    - sqlite3 --version
-    - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1    # [win]
-    - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1    # [win]
-    - test -f $PREFIX/lib/libsqlite3.dylib                     # [osx]
-    - test -f $PREFIX/lib/libsqlite3.so                        # [linux]
-    - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
-    - test -f $PREFIX/include/sqlite3.h                        # [not win]
+outputs:
+  - name: libsqlite
+    script: install_lib.sh   # [not win]
+    script: install_lib.bat  # [win]
+    requirements:
+      host:
+        - ncurses                # [not win]
+        # While readline isn't necessary to run
+        # It is necessary to trick `make` into thinking
+        # nothing has changed and not to attempt to recompile
+        - readline               # [not win]
+      run:
+        - ncurses   # [not win]
+    test:
+      commands:
+        - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1    # [win]
+        - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1    # [win]
+        - test -f $PREFIX/lib/libsqlite3.dylib                     # [osx]
+        - test -f $PREFIX/lib/libsqlite3.so                        # [linux]
+        - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
+        - test -f $PREFIX/include/sqlite3.h                        # [not win]
+    about:
+      home: http://www.sqlite.org/
+      license: Public-Domain (http://www.sqlite.org/copyright.html)
+      summary: 'Library for implementing a self-contained, zero-configuration, SQL database engine.'
+  - name: sqlite
+    script: install_bin.sh   # [not win]
+    script: install_bin.bat  # [win]
+    requirements:
+      run:
+        - {{ pin_subpackage("libsqlite", exact=true) }}
+        - readline  # [notwin]
+    test:
+      # it can pick up build environment's sqlite3, so explicitly check for the file too
+      commands:
+        - test -f $PREFIX/bin/sqlite3                              # [not win]
+        - if not exist %PREFIX%\\Library\bin\sqlite3.exe exit 1    # [win]
+        - sqlite3 --version
+    about:
+      home: http://www.sqlite.org/
+      license: Public-Domain (http://www.sqlite.org/copyright.html)
+      summary: 'Implements a self-contained, zero-configuration, SQL database engine.'
 
 about:
   home: http://www.sqlite.org/
