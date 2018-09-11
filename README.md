@@ -1,13 +1,13 @@
 About sqlite
 ============
 
-Home: http://www.sqlite.org/
+Home: 
 
-Package license: Public-Domain (http://www.sqlite.org/copyright.html)
+Package license: 
 
 Feedstock license: BSD 3-Clause
 
-Summary: Implements a self-contained, zero-configuration, SQL database engine.
+Summary: A package to specify the default sqlite variant.
 
 
 
@@ -23,7 +23,10 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-_sqlite_variant-green.svg)](https://anaconda.org/conda-forge/_sqlite_variant) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_sqlite_variant.svg)](https://anaconda.org/conda-forge/_sqlite_variant) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_sqlite_variant.svg)](https://anaconda.org/conda-forge/_sqlite_variant) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_sqlite_variant.svg)](https://anaconda.org/conda-forge/_sqlite_variant) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sqlite-green.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sqlite--gplfree-green.svg)](https://anaconda.org/conda-forge/sqlite-gplfree) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sqlite-gplfree.svg)](https://anaconda.org/conda-forge/sqlite-gplfree) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sqlite-gplfree.svg)](https://anaconda.org/conda-forge/sqlite-gplfree) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sqlite-gplfree.svg)](https://anaconda.org/conda-forge/sqlite-gplfree) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sqlite--readline-green.svg)](https://anaconda.org/conda-forge/sqlite-readline) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sqlite-readline.svg)](https://anaconda.org/conda-forge/sqlite-readline) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sqlite-readline.svg)](https://anaconda.org/conda-forge/sqlite-readline) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sqlite-readline.svg)](https://anaconda.org/conda-forge/sqlite-readline) |
 
 Installing sqlite
 =================
@@ -34,16 +37,16 @@ Installing `sqlite` from the `conda-forge` channel can be achieved by adding `co
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `sqlite` can be installed with:
+Once the `conda-forge` channel has been enabled, `_sqlite_variant, sqlite, sqlite-gplfree, sqlite-readline` can be installed with:
 
 ```
-conda install sqlite
+conda install _sqlite_variant sqlite sqlite-gplfree sqlite-readline
 ```
 
-It is possible to list all of the versions of `sqlite` available on your platform with:
+It is possible to list all of the versions of `_sqlite_variant` available on your platform with:
 
 ```
-conda search sqlite --channel conda-forge
+conda search _sqlite_variant --channel conda-forge
 ```
 
 
