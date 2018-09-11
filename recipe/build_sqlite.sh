@@ -12,9 +12,8 @@ fi
             $B --enable-threadsafe \
             --enable-json1 \
             --enable-tempstore \
+            "$@" \
             --enable-shared=yes \
-            --enable-readline \
-            --disable-editline \
             --disable-tcl \
             --prefix="${PREFIX}"
 

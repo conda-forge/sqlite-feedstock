@@ -16,18 +16,11 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 1
+  number: 0
 
 requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - pkg-config             # [not win]
-  host:
-    - ncurses                # [not win]
-    - readline               # [not win]
   run:
-    - ncurses                # [not win]
-    - readline               # [not win]
+    - {{ pin_subpackage(name|lower + '-' + sqlite_variant, exact=True) }}
 
 test:
   commands:
@@ -39,12 +32,44 @@ test:
     - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
     - test -f $PREFIX/include/sqlite3.h                        # [not win]
 
+outputs:
+  - name: _sqlite_variant
+    build:
+      string: {{ sqlite_variant }}
+    version: {{ variant_version }}
+    about:
+      summary: "A package to specify the default sqlite variant."
+
+  - name: {{ name|lower + '-' + sqlite_variant }}
+    build:
+      script:
+        - bash $RECIPE_DIR/build_sqlite.sh --enable-editline --disable-readline  # [sqlite_variant == 'gplfree' and not win]
+        - bash $RECIPE_DIR/build_sqlite.sh --enable-readline --disable-editline  # [sqlite_variant == 'readline']
+        - "%RECIPE_DIR%\\build_sqlite.bat"  # [win]
+    requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - pkg-config  # [not win]
+      host:
+        - ncurses     # [not win]
+        - readline    # [sqlite_variant == 'readline']
+        - libedit     # [sqlite_variant == 'gplfree' and not win]
+      run:
+        - ncurses     # [not win]
+        - readline    # [sqlite_variant == 'readline']
+        - libedit     # [sqlite_variant == 'gplfree' and not win]
+        - {{ pin_subpackage( "_sqlite_variant", exact=True) }}
+    extra:
+      sqlite_variant: {{ sqlite_variant }}
+
 about:
   home: http://www.sqlite.org/
   license: Public-Domain (http://www.sqlite.org/copyright.html)
-  summary: 'Implements a self-contained, zero-configuration, SQL database engine.'
+  summary: 'Implements a self-contained, zero-configuration, SQL database engine with libedit (gplfree) on unix machines.'  # [sqlite_variant == 'gplfree']
+  summary: 'Implements a self-contained, zero-configuration, SQL database engine with readline support on unix machines.'   # [sqlite_variant == 'readline']
 
 extra:
+  sqlite_variant: {{ sqlite_variant }}
   recipe-maintainers:
     - jakirkham
     - jjhelmus

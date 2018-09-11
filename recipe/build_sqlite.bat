@@ -10,6 +10,7 @@ cl /DSQLITE_ENABLE_RTREE shell.c sqlite3.c -Fesqlite3.exe /DSQLITE_EXPORTS
 :: build the dll
 cl /DSQLITE_ENABLE_RTREE sqlite3.c -link -dll -out:sqlite3.dll
 
+md %LIBRARY_BIN% %LIBRARY_LIB% %LIBRARY_INC%
 COPY sqlite3.exe %LIBRARY_BIN% || exit 1
 COPY sqlite3.dll %LIBRARY_BIN% || exit 1
 COPY sqlite3.lib %LIBRARY_LIB% || exit 1

@@ -1,0 +1,11 @@
+# Setting the variant_version to identically 0.0 makes it not overwrite the parent
+# package version
+variant_version:
+  - "0.0.0"
+  - "1.0.0"    # [not win]
+sqlite_variant:
+  - "gplfree"
+  - "readline"  # [not win]
+zip_keys:
+  - variant_version
+  - sqlite_variant
