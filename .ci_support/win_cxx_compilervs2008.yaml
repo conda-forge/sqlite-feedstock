@@ -4,7 +4,6 @@ channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2008
-- vs2015
 pin_run_as_build:
   sqlite:
     max_pin: x

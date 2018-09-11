@@ -8,8 +8,8 @@ osx_image: xcode6.4
 
 env:
   matrix:
-    - CONFIG=osx_sqlite_variantgplfree
-    - CONFIG=osx_sqlite_variantreadline
+    - CONFIG=osx_sqlite_variantgplfreevariant_version0.0.0
+    - CONFIG=osx_sqlite_variantreadlinevariant_version1.0.0
 
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
