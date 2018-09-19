@@ -42,8 +42,6 @@ test:
     - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
     - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
     - test -f $PREFIX/include/sqlite3.h                        # [not win]
-    - conda inspect linkages -p $PREFIX sqlite  # [not win]
-    - conda inspect objects -p $PREFIX sqlite  # [osx]
 
 about:
   home: http://www.sqlite.org/
