@@ -1,13 +1,13 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 build_number_decrement:
-- '1000'
+- '0'
+c_compiler:
+- clang
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/gcc7,defaults
 channel_targets:
-- conda-forge main
-cxx_compiler:
-- toolchain_cxx
+- conda-forge gcc7
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
@@ -22,7 +22,7 @@ pin_run_as_build:
 readline:
 - '7.0'
 zip_keys:
-- - cxx_compiler
+- - c_compiler
   - channel_sources
   - channel_targets
   - build_number_decrement
