@@ -7,8 +7,11 @@ Package license: Public-Domain (http://www.sqlite.org/copyright.html)
 
 Feedstock license: BSD 3-Clause
 
-Summary: Implements a self-contained, zero-configuration, SQL database engine.
+Summary: Implements a self-contained, zero-configuration, SQL database engine
 
+SQLite is a self-contained, high-reliability, embedded, full-featured,
+public-domain, SQL database engine.It is the most used database engine
+in the world.
 
 
 Current build status
