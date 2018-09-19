@@ -24,13 +24,13 @@ if [ $(uname -m) == ppc64le ]; then
     export PPC64LE="--build=ppc64le-linux"
 fi
 
-./configure --prefix=${PREFIX}   \
-            --build=${BUILD}     \
-            --host=${HOST}       \
-            --enable-threadsafe  \
-            --enable-shared=yes  \
-            --enable-readline    \
-            --enable-editline    \
+./configure --prefix=${PREFIX} \
+            --build=${BUILD} \
+            --host=${HOST} \
+            --enable-threadsafe \
+            --enable-shared=yes \
+            --enable-readline \
+            --disable-editline \
             --disable-tcl \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
