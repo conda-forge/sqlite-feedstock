@@ -1,4 +1,4 @@
-{% set version = "3.28.0" %}
+{% set version = "3.29.0" %}
 {% set year = "2019" %}
 {% set version_split = version.split(".") %}
 {% set major = version_split[0] %}
@@ -12,12 +12,12 @@ package:
 
 source:
   url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-  sha256: d61b5286f062adfce5125eaf544d495300656908e61fca143517afcc0a89b7c3
+  sha256: 8e7c1e2950b5b04c5944a981cb31fffbf9d2ddda939d536838ebc854481afd5b
   patches:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # sometimes adds new symbols.  Default behavior is OK.
     #    https://abi-laboratory.pro/tracker/timeline/sqlite/
