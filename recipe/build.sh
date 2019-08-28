@@ -17,6 +17,7 @@ export CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 \
                              -DSQLITE_MAX_EXPR_DEPTH=10000 \
                              -DSQLITE_ENABLE_GEOPOLY \
                              -DSQLITE_ENABLE_JSON1 \
+                             -DSQLITE_ENABLE_FTS5 \
                              -DSQLITE_ENABLE_RTREE=1"
 
 
