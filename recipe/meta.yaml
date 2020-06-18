@@ -58,41 +58,12 @@ source:
 {% endif %}
 {% if patchset == 'rebased' %}
     patches:
-      # git format-patch -1 HEAD~4 --start-number=1 --suffix=.CVE-2020-9327.1.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/rebased/0001-Take-care-when-checking-the-table-of.CVE-2020-9327.1.patch
-      # git format-patch -1 HEAD~3 --start-number=2 --suffix=.CVE-2020-9327.2.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/rebased/0002-A-better-smaller-and-faster-solution.CVE-2020-9327.2.patch
-      # git format-patch -1 HEAD~2 --start-number=3 --suffix=.CVE-2020-11655.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/rebased/0003-In-the-event-of-a-semantic-error-in-a.CVE-2020-11655.patch
-      # git format-patch -1 HEAD~1 --start-number=4 --suffix=.CVE-2020-11656.1.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/rebased/0004-Fix-a-case-when-a-pointer-might-be-.CVE-2020-11656.1.patch
-      # git format-patch -1 HEAD~0 --start-number=5 --suffix=.CVE-2020-11656.2.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/rebased/0005-Do-not-suppress-errors-when-resolvi.CVE-2020-11656.2.patch
 {% endif %}
 {% if patchset == 'github' %}
     patches:
-      # git format-patch -1 bf48ce49f7c25e5d4524de9fdc5c0d505218d06d --start-number=1 --suffix=.CVE-2020-9327.1.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/github/0001-Take-care-when-checking-the-table-of.CVE-2020-9327.1.patch
-      # git format-patch -1 78d1d225d87af40f5bdca57fa72f00b6ffaffa21 --start-number=2 --suffix=.CVE-2020-9327.2.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/github/0002-A-better-smaller-and-faster-solution.CVE-2020-9327.2.patch
-      # git format-patch -1 c415d91007e1680e4eb17def583b202c3c83c718 --start-number=3 --suffix=.CVE-2020-11655.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/github/0003-In-the-event-of-a-semantic-error-in-a.CVE-2020-11655.patch
-      # git format-patch -1 fb99e388ec7f30fe43e4878236e3695ff24ae58d --start-number=4 --suffix=.CVE-2020-11656.1.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/github/0004-Fix-a-case-when-a-pointer-might-be-.CVE-2020-11656.1.patch
-      # git format-patch -1 96b6e28400bdbd4470f8f0e5b5b04f26cd0e2f00 --start-number=5 --suffix=.CVE-2020-11656.2.patch -- ':!manifest' ':!manifest.uuid'
-      - patches/github/0005-Do-not-suppress-errors-when-resolvi.CVE-2020-11656.2.patch
 {% endif %}
 {% if patchset == 'fossil' %}
     patches:
-      # Fossil checksums!
-      - patches/fossil/0001-CVE-2020-9327-1-9d0d4ab95dc0c56e.patch
-      - patches/fossil/0002-CVE-2020-9327-2-abc473fb8fb99900.patch
-      - patches/fossil/0003-CVE-2020-11655-4a302b42c7bf5e11.patch
-      # Does not apply
-      # git repo: fb99e388ec7f30fe43e4878236e3695ff24ae58d
-      - patches/fossil/0004-CVE-2020-11656-d09f8c3621d5f7f8.patch
-      # git repo: 96b6e28400bdbd4470f8f0e5b5b04f26cd0e2f00
-      - patches/fossil/0005-CVE-2020-11656-b64674919f673602.patch
 {% endif %}
 {% if patchset == 'amalgamated' or patchset == 'rebased' %}
   - url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
