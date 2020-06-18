@@ -1,4 +1,4 @@
-{% set version = "3.31.1" %}
+{% set version = "3.32.2" %}
 {% set year = "2020" %}
 {% set version_split = version.split(".") %}
 {% set major = version_split[0] %}
@@ -96,17 +96,16 @@ source:
 {% endif %}
 {% if patchset == 'amalgamated' or patchset == 'rebased' %}
   - url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-    sha256: 62284efebc05a76f909c580ffa5c008a7d22a1287285d68b7825a2b6b51949ae
+    sha256: 2dbef1254c1dbeeb5d13d7722d37e633f18ccbba689806b0a65b68701a5b6084
     folder: amalgamated
 {% if patchset == 'amalgamated' %}
     patches:
-      - patches/applicable-to-amalgamated/0000-sqlite3-c-amalgamated.patch
       - patches/applicable-to-amalgamated/0001-expose_symbols.patch
 {% endif %}
 {% endif %}
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # sometimes adds new symbols.  Default behavior is OK.
     #    https://abi-laboratory.pro/tracker/timeline/sqlite/
