@@ -5,7 +5,7 @@ Home: http://www.sqlite.org/
 
 Package license: Public-Domain (http://www.sqlite.org/copyright.html)
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Implements a self-contained, zero-configuration, SQL database engine
 
