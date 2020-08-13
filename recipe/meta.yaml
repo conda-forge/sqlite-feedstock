@@ -27,6 +27,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - make  # [not win]
+    - libtool  # [not win]
   host:
     - ncurses  # [not win]
     - readline  # [not win]
