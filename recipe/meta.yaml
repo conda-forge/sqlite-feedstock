@@ -31,9 +31,11 @@ requirements:
   host:
     - ncurses  # [not win]
     - readline  # [not win]
+    - zlib  # [not win]
   run:
     - ncurses  # [not win]
     - readline  # [not win]
+    - zlib  # [not win]
 
 test:
   commands:
