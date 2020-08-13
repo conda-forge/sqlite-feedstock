@@ -21,7 +21,11 @@ pin_run_as_build:
     max_pin: x.x
   readline:
     max_pin: x
+  zlib:
+    max_pin: x.x
 readline:
 - '8.0'
 target_platform:
 - linux-aarch64
+zlib:
+- '1.2'
