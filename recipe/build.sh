@@ -7,6 +7,8 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
 export CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 \
                              -DSQLITE_ENABLE_UNLOCK_NOTIFY \
@@ -21,7 +23,7 @@ export CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 \
                              -DSQLITE_ENABLE_RTREE=1"
 
 
-if [ $(uname -m) == ppc64le ]; then
+if [[ "$target_platform" == "linux-ppc64le" ]]; then
     export PPC64LE="--build=ppc64le-linux"
 fi
 
