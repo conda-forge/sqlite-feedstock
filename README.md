@@ -3,11 +3,15 @@ About sqlite
 
 Home: http://www.sqlite.org/
 
-Package license: Public-Domain (http://www.sqlite.org/copyright.html)
+Package license: [Public-Domain (http://www.sqlite.org/copyright.html)](http://www.sqlite.org/copyright.html)
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sqlite-feedstock/blob/master/LICENSE.txt)
 
 Summary: Implements a self-contained, zero-configuration, SQL database engine
+
+Development: https://github.com/mackyle/sqlite
+
+Documentation: http://www.sqlite.org/docs.html
 
 SQLite is a self-contained, high-reliability, embedded, full-featured,
 public-domain, SQL database engine.It is the most used database engine
@@ -193,4 +197,5 @@ Feedstock Maintainers
 * [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@snorfalorpagus](https://github.com/snorfalorpagus/)
+* [@xylar](https://github.com/xylar/)
 
