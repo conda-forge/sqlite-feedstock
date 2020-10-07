@@ -17,7 +17,7 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # sometimes adds new symbols.  Default behavior is OK.
     #    https://abi-laboratory.pro/tracker/timeline/sqlite/
@@ -45,7 +45,9 @@ test:
     - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
     - test ! -f $PREFIX/lib/libsqlite3.a  # [not win]
     - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
+    - if not exist %PREFIX%\\Library\include\sqlite3ext.h exit 1  # [win]
     - test -f $PREFIX/include/sqlite3.h                        # [not win]
+    - test -f $PREFIX/include/sqlite3ext.h                        # [not win]
 
 about:
   home: http://www.sqlite.org/
@@ -68,3 +70,4 @@ extra:
     - ocefpaf
     - snorfalorpagus
     - mingwandroid
+    - xylar
