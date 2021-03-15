@@ -33,7 +33,7 @@ requirements:
     - readline  # [not win]
     - zlib  # [not win]
   ignore_run_exports:
-    - ncurses  # [not win]  
+    - ncurses 
   run:
     - readline  # [not win]
     - zlib  # [not win]
