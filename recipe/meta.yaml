@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-  sha256: 3ba0502aec018125480535159c5a9c3a7f636bd088d918cdce6ba3b2d468342a
+  sha256: 3dfb3f143c83695a555c7dd9e06ed924f9d273c287989874e102656724baf2d0
   patches:
     - expose_symbols.patch  # [win]
 
