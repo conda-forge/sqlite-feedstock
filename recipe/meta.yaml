@@ -35,7 +35,6 @@ requirements:
   ignore_run_exports:
     - ncurses  # [not win]  
   run:
-    - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
 
