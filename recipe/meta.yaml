@@ -1,5 +1,5 @@
 {% set version = "3.35.0" %}
-{% set year = "2020" %}
+{% set year = "2021" %}
 {% set version_split = version.split(".") %}
 {% set major = version_split[0] %}
 {% set minor = version_split[1]|int * 10 %}
