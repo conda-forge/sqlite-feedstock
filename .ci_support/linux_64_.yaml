@@ -23,5 +23,8 @@ readline:
 - '8.0'
 target_platform:
 - linux-64
+zip_keys:
+- - cdt_name
+  - docker_image
 zlib:
 - '1.2'
