@@ -1,4 +1,4 @@
-{% set version = "3.35.4" %}
+{% set version = "3.35.5" %}
 {% set year = "2021" %}
 {% set version_split = version.split(".") %}
 {% set major = version_split[0] %}
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-  sha256: 7771525dff0185bfe9638ccce23faa0e1451757ddbda5a6c853bb80b923a512d
+  sha256: f52b72a5c319c3e516ed7a92e123139a6e87af08a2dc43d7757724f6132e6db0
   patches:
     - expose_symbols.patch  # [win]
 
