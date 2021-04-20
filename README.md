@@ -197,5 +197,4 @@ Feedstock Maintainers
 * [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@snorfalorpagus](https://github.com/snorfalorpagus/)
-* [@xylar](https://github.com/xylar/)
 
