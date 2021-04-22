@@ -3,7 +3,7 @@ About sqlite
 
 Home: http://www.sqlite.org/
 
-Package license: [Public-Domain (http://www.sqlite.org/copyright.html)](http://www.sqlite.org/copyright.html)
+Package license: [Unlicense](http://www.sqlite.org/copyright.html)
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sqlite-feedstock/blob/master/LICENSE.txt)
 
@@ -113,6 +113,7 @@ Installing `sqlite` from the `conda-forge` channel can be achieved by adding `co
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `sqlite` can be installed with:
@@ -192,10 +193,8 @@ Feedstock Maintainers
 =====================
 
 * [@jakirkham](https://github.com/jakirkham/)
-* [@jjhelmus](https://github.com/jjhelmus/)
 * [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@snorfalorpagus](https://github.com/snorfalorpagus/)
-* [@xylar](https://github.com/xylar/)
 
