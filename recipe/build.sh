@@ -22,6 +22,9 @@ export CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 \
                              -DSQLITE_ENABLE_FTS5 \
                              -DSQLITE_ENABLE_RTREE=1"
 
+if [[ $target_platform =~ linux.* ]]; then
+    export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
+fi
 
 if [[ "$target_platform" == "linux-ppc64le" ]]; then
     export PPC64LE="--build=ppc64le-linux"
