@@ -30,6 +30,8 @@ requirements:
     - {{ compiler('c') }}
     - make  # [not win]
     - libtool  # [not win]
+    - m2-patch  # [win]
+    - patch  # [not win]
   host:
     - ncurses  # [not win]
     - readline  # [not win]
@@ -52,7 +54,7 @@ test:
 
 about:
   home: http://www.sqlite.org/
-  license: Public-Domain (http://www.sqlite.org/copyright.html)
+  license: Unlicense
   license_url: http://www.sqlite.org/copyright.html
   summary: Implements a self-contained, zero-configuration, SQL database engine
   description: |
@@ -61,7 +63,7 @@ about:
     in the world.
   doc_url: http://www.sqlite.org/docs.html
   doc_source_url: https://github.com/mackyle/sqlite/tree/master/doc
-  dev_url: https://github.com/mackyle/sqlite
+  dev_url: https://sqlite.org/src/dir?ci=trunk
 
 extra:
   recipe-maintainers:
