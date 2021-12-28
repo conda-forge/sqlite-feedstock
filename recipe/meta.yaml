@@ -1,4 +1,4 @@
-{% set version = "3.36.0" %}
+{% set version = "3.37.0" %}
 {% set year = "2021" %}
 {% set version_split = version.split(".") %}
 {% set major = version_split[0] %}
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-  sha256: bd90c3eb96bee996206b83be7065c9ce19aef38c3f4fb53073ada0d0b69bbce3
+  sha256: 731a4651d4d4b36fc7d21db586b2de4dd00af31fd54fb5a9a4b7f492057479f7
   patches:
     - expose_symbols.patch  # [win]
 
@@ -30,6 +30,8 @@ requirements:
     - {{ compiler('c') }}
     - make  # [not win]
     - libtool  # [not win]
+    - m2-patch  # [win]
+    - patch  # [not win]
   host:
     - ncurses  # [not win]
     - readline  # [not win]
@@ -52,7 +54,7 @@ test:
 
 about:
   home: http://www.sqlite.org/
-  license: Public-Domain (http://www.sqlite.org/copyright.html)
+  license: Unlicense
   license_url: http://www.sqlite.org/copyright.html
   summary: Implements a self-contained, zero-configuration, SQL database engine
   description: |
@@ -61,7 +63,7 @@ about:
     in the world.
   doc_url: http://www.sqlite.org/docs.html
   doc_source_url: https://github.com/mackyle/sqlite/tree/master/doc
-  dev_url: https://github.com/mackyle/sqlite
+  dev_url: https://sqlite.org/src/dir?ci=trunk
 
 extra:
   recipe-maintainers:
