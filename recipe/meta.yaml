@@ -22,35 +22,33 @@ build:
     # sometimes adds new symbols.  Default behavior is OK.
     #    https://abi-laboratory.pro/tracker/timeline/sqlite/
     - {{ pin_subpackage('sqlite') }}
-  ignore_run_exports:
-    - ncurses 
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - make  # [not win]
-    - libtool  # [not win]
+    - make      # [not win]
+    - libtool   # [not win]
     - m2-patch  # [win]
-    - patch  # [not win]
+    - patch     # [not win]
   host:
-    - ncurses  # [not win]
+    - ncurses   # [not win]
     - readline  # [not win]
-    - zlib  # [not win]
+    - zlib      # [not win]
   run:
     - readline  # [not win]
-    - zlib  # [not win]
+    - zlib      # [not win]
 
 test:
   commands:
     - sqlite3 --version
-    - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1  # [win]
-    - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1  # [win]
-    - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
-    - test ! -f $PREFIX/lib/libsqlite3.a  # [not win]
-    - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
+    - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1       # [win]
+    - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1       # [win]
+    - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}                  # [not win]
+    - test ! -f $PREFIX/lib/libsqlite3.a                          # [not win]
+    - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1     # [win]
     - if not exist %PREFIX%\\Library\include\sqlite3ext.h exit 1  # [win]
-    - test -f $PREFIX/include/sqlite3.h  # [not win]
-    - test -f $PREFIX/include/sqlite3ext.h  # [not win]
+    - test -f $PREFIX/include/sqlite3.h                           # [not win]
+    - test -f $PREFIX/include/sqlite3ext.h                        # [not win]
 
 about:
   home: http://www.sqlite.org/
