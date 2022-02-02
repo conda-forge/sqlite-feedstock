@@ -53,7 +53,7 @@ test:
     - test -f $PREFIX/include/sqlite3ext.h                        # [not win]
 
 about:
-  home: http://www.sqlite.org/
+  home: https://www.sqlite.org/
   license: Unlicense
   license_url: http://www.sqlite.org/copyright.html
   summary: Implements a self-contained, zero-configuration, SQL database engine
@@ -61,7 +61,7 @@ about:
     SQLite is a self-contained, high-reliability, embedded, full-featured,
     public-domain, SQL database engine.It is the most used database engine
     in the world.
-  doc_url: http://www.sqlite.org/docs.html
+  doc_url: https://www.sqlite.org/docs.html
   doc_source_url: https://github.com/mackyle/sqlite/tree/master/doc
   dev_url: https://sqlite.org/src/dir?ci=trunk
 
