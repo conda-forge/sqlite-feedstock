@@ -55,7 +55,7 @@ test:
 about:
   home: https://www.sqlite.org/
   license: Unlicense
-  license_url: http://www.sqlite.org/copyright.html
+  license_url: https://www.sqlite.org/copyright.html
   summary: Implements a self-contained, zero-configuration, SQL database engine
   description: |
     SQLite is a self-contained, high-reliability, embedded, full-featured,
