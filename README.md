@@ -1,5 +1,5 @@
-About sqlite
-============
+About sqlite-split
+==================
 
 Home: http://www.sqlite.org/
 
@@ -97,53 +97,54 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libsqlite-green.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sqlite-green.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) |
 
-Installing sqlite
-=================
+Installing sqlite-split
+=======================
 
-Installing `sqlite` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `sqlite-split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `sqlite` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libsqlite, sqlite` can be installed with `conda`:
 
 ```
-conda install sqlite
-```
-
-or with `mamba`:
-
-```
-mamba install sqlite
-```
-
-It is possible to list all of the versions of `sqlite` available on your platform with `conda`:
-
-```
-conda search sqlite --channel conda-forge
+conda install libsqlite sqlite
 ```
 
 or with `mamba`:
 
 ```
-mamba search sqlite --channel conda-forge
+mamba install libsqlite sqlite
+```
+
+It is possible to list all of the versions of `libsqlite` available on your platform with `conda`:
+
+```
+conda search libsqlite --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search libsqlite --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search sqlite --channel conda-forge
+mamba repoquery search libsqlite --channel conda-forge
 
-# List packages depending on `sqlite`:
-mamba repoquery whoneeds sqlite --channel conda-forge
+# List packages depending on `libsqlite`:
+mamba repoquery whoneeds libsqlite --channel conda-forge
 
-# List dependencies of `sqlite`:
-mamba repoquery depends sqlite --channel conda-forge
+# List dependencies of `libsqlite`:
+mamba repoquery depends libsqlite --channel conda-forge
 ```
 
 
@@ -188,17 +189,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating sqlite-feedstock
-=========================
+Updating sqlite-split-feedstock
+===============================
 
-If you would like to improve the sqlite recipe or build a new
+If you would like to improve the sqlite-split recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/sqlite-feedstock are
+Note that all branches in the conda-forge/sqlite-split-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.

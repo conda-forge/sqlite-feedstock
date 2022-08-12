@@ -7,7 +7,7 @@
 {% set version_coded=(major ~ (("%03d" % minor)|string) ~ (("%03d" % bugfix)|string)) %}
 
 package:
-  name: sqlite
+  name: sqlite-split
   version: {{ version }}
 
 source:
@@ -17,11 +17,7 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
-  run_exports:
-    # sometimes adds new symbols.  Default behavior is OK.
-    #    https://abi-laboratory.pro/tracker/timeline/sqlite/
-    - {{ pin_subpackage('sqlite') }}
+  number: 1
 
 requirements:
   build:
@@ -32,22 +28,65 @@ requirements:
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
-  run:
-    - ncurses  # [not win]
-    - readline  # [not win]
-    - zlib  # [not win]
 
-test:
-  commands:
-    - sqlite3 --version
-    - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1  # [win]
-    - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1  # [win]
-    - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
-    - test ! -f $PREFIX/lib/libsqlite3.a  # [not win]
-    - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
-    - if not exist %PREFIX%\\Library\include\sqlite3ext.h exit 1  # [win]
-    - test -f $PREFIX/include/sqlite3.h  # [not win]
-    - test -f $PREFIX/include/sqlite3ext.h  # [not win]
+
+outputs:
+  - name: libsqlite
+    build:
+      run_exports:
+        # sometimes adds new symbols.  Default behavior is OK.
+        #    https://abi-laboratory.pro/tracker/timeline/sqlite/
+        - {{ pin_subpackage('libsqlite') }}
+    files:
+      - include/sqlite*.h          # [unix]
+      - lib/libsqlite*             # [unix]
+      - lib/pkgconfig/sqlite3.pc   # [unix]
+      - Library\bin\sqlite3.dll    # [win]
+      - Library\lib\sqlite3.lib    # [win]
+      - Library\include\sqlite*.h  # [win]
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - make  # [not win]
+        - libtool  # [not win]
+      host:
+        # readline and ncurses are only required by the executable
+        # not the library. Leaving it out of the host requirements
+        # ensures it doesn't appear in the run section (through run_export)
+        - zlib  # [not win]
+    test:
+      commands:
+        - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1  # [win]
+        - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1  # [win]
+        - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
+        - test ! -f $PREFIX/lib/libsqlite3.a  # [not win]
+        - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
+        - if not exist %PREFIX%\\Library\include\sqlite3ext.h exit 1  # [win]
+        - test -f $PREFIX/include/sqlite3.h  # [not win]
+        - test -f $PREFIX/include/sqlite3ext.h  # [not win]
+  - name: sqlite
+    build:
+      run_exports:
+        # sometimes adds new symbols.  Default behavior is OK.
+        #    https://abi-laboratory.pro/tracker/timeline/sqlite/
+        - {{ pin_subpackage('libsqlite') }}
+    files:
+      - bin/sqlite3              # [unix]
+      - Library\bin\sqlite3.exe  # [win]
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - make  # [not win]
+        - libtool  # [not win]
+      host:
+        - ncurses  # [not win]
+        - readline  # [not win]
+        - zlib  # [not win]
+      run:
+        - {{ pin_subpackage('libsqlite', exact=True) }}
+    test:
+      commands:
+        - sqlite3 --version
 
 about:
   home: http://www.sqlite.org/
