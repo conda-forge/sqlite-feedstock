@@ -12,11 +12,6 @@ macos_machine:
 - x86_64-apple-darwin13.4.0
 ncurses:
 - '6'
-pin_run_as_build:
-  readline:
-    max_pin: x
-  zlib:
-    max_pin: x.x
 readline:
 - '8'
 target_platform:
