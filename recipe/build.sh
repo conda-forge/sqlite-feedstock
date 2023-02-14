@@ -39,6 +39,7 @@ fi
             --disable-editline \
             --disable-static \
             --disable-tcl \
+            --enable-dynamic-extensions \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
