@@ -1,4 +1,4 @@
-{% set version = "3.41.1" %}
+{% set version = "3.41.2" %}
 {% set build = "0" %}
 {% set year = "2023" %}
 {% set version_split = version.split(".") %}
