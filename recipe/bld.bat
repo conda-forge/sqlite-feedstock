@@ -6,6 +6,7 @@ set PLATFORM=x64
 
 :: build the shell
 cl ^
+    /O2 ^
     /DSQLITE_ENABLE_RTREE ^
     /DSQLITE_ENABLE_GEOPOLY ^
     /DSQLITE_ENABLE_COLUMN_METADATA=1 ^
@@ -17,6 +18,7 @@ cl ^
 
 :: build the dll
 cl ^
+    /O2 ^
     /DSQLITE_ENABLE_RTREE ^
     /DSQLITE_ENABLE_GEOPOLY ^
     /DSQLITE_ENABLE_COLUMN_METADATA=1 ^
