@@ -1,11 +1,11 @@
-About sqlite-split
-==================
+About sqlite-split-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sqlite-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.sqlite.org/
 
 Package license: [Unlicense](http://www.sqlite.org/copyright.html)
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sqlite-feedstock/blob/main/LICENSE.txt)
 
 Summary: Implements a self-contained, zero-configuration, SQL database engine
 
