@@ -17,7 +17,7 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -39,7 +39,8 @@ outputs:
         - {{ pin_subpackage('libsqlite') }}
     files:
       - include/sqlite*.h          # [unix]
-      - lib/libsqlite*             # [unix]
+      - lib/libsqlite*.so*          # [linux]
+      - lib/libsqlite*.dylib*       # [osx]
       - lib/pkgconfig/sqlite3.pc   # [unix]
       - Library\bin\sqlite3.dll    # [win]
       - Library\lib\sqlite3.lib    # [win]
@@ -70,7 +71,7 @@ outputs:
       skip: True  # [win]
     files:
       - include/sqlite*.h          # [unix]
-      - lib/libsqlite.a            # [unix]
+      - lib/libsqlite3.a           # [unix]
       - lib/pkgconfig/sqlite3.pc   # [unix]
     requirements:
       build:
