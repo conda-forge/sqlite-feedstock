@@ -218,5 +218,4 @@ Feedstock Maintainers
 * [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
-* [@snorfalorpagus](https://github.com/snorfalorpagus/)
 
