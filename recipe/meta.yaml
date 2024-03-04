@@ -17,7 +17,7 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -39,7 +39,8 @@ outputs:
         - {{ pin_subpackage('libsqlite') }}
     files:
       - include/sqlite*.h          # [unix]
-      - lib/libsqlite*             # [unix]
+      - lib/libsqlite*.so*          # [linux]
+      - lib/libsqlite*.dylib*       # [osx]
       - lib/pkgconfig/sqlite3.pc   # [unix]
       - Library\bin\sqlite3.dll    # [win]
       - Library\lib\sqlite3.lib    # [win]
@@ -62,6 +63,30 @@ outputs:
         - test ! -f $PREFIX/lib/libsqlite3.a  # [not win]
         - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
         - if not exist %PREFIX%\\Library\include\sqlite3ext.h exit 1  # [win]
+        - test -f $PREFIX/include/sqlite3.h  # [not win]
+        - test -f $PREFIX/include/sqlite3ext.h  # [not win]
+  - name: libsqlite-static
+    build:
+      # not sure how to do the static package for windows
+      skip: True  # [win]
+    files:
+      - include/sqlite*.h          # [unix]
+      - lib/libsqlite3.a           # [unix]
+      - lib/pkgconfig/sqlite3.pc   # [unix]
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - make
+        - libtool
+      host:
+        # readline and ncurses are only required by the executable
+        # not the library. Leaving it out of the host requirements
+        # ensures it doesn't appear in the run section (through run_export)
+        - zlib
+    test:
+      commands:
+        - test ! -f $PREFIX/lib/libsqlite3${SHLIB_EXT}
+        - test -f $PREFIX/lib/libsqlite3.a
         - test -f $PREFIX/include/sqlite3.h  # [not win]
         - test -f $PREFIX/include/sqlite3ext.h  # [not win]
   - name: sqlite

@@ -37,7 +37,6 @@ fi
             --enable-shared=yes \
             --enable-readline \
             --disable-editline \
-            --disable-static \
             --disable-tcl \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
