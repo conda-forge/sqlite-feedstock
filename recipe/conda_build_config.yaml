@@ -1,0 +1,6 @@
+# 2024/03 We are trying to avoid a full rebuild of zlib
+# but we need to test a few key packages for compatibility first
+# https://github.com/conda-forge/conda-forge-pinning-feedstock/pull/5443
+zlib:         # [linux]
+  - '1.2'     # [linux]
+  - '1.3'     # [linux]
