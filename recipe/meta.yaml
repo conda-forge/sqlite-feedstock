@@ -1,4 +1,4 @@
-{% set version = "3.45.3" %}
+{% set version = "3.46.0" %}
 {% set year = "2024" %}
 {% set version_split = version.split(".") %}
 {% set major = version_split[0] %}
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-  sha256: b2809ca53124c19c60f42bf627736eae011afdcc205bb48270a5ee9a38191531
+  sha256: 6f8e6a7b335273748816f9b3b62bbdc372a889de8782d7f048c653a447417a7d
   patches:
     - expose_symbols.patch  # [win]
 
@@ -22,6 +22,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - make  # [not win]
     - libtool  # [not win]
   host:
@@ -47,6 +48,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - make  # [not win]
         - libtool  # [not win]
       host:
@@ -76,6 +78,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - make  # [not win]
         - libtool  # [not win]
       host:
