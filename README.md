@@ -84,6 +84,13 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sqlite-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
+            </tr><tr>
+              <td>win_arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1960&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sqlite-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_" alt="variant">
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -98,6 +105,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libsqlite-green.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libsqlite.svg)](https://anaconda.org/conda-forge/libsqlite) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libsqlite--static-green.svg)](https://anaconda.org/conda-forge/libsqlite-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libsqlite-static.svg)](https://anaconda.org/conda-forge/libsqlite-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libsqlite-static.svg)](https://anaconda.org/conda-forge/libsqlite-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libsqlite-static.svg)](https://anaconda.org/conda-forge/libsqlite-static) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sqlite-green.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sqlite.svg)](https://anaconda.org/conda-forge/sqlite) |
 
 Installing sqlite-split
@@ -110,16 +118,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libsqlite, sqlite` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libsqlite, libsqlite-static, sqlite` can be installed with `conda`:
 
 ```
-conda install libsqlite sqlite
+conda install libsqlite libsqlite-static sqlite
 ```
 
 or with `mamba`:
 
 ```
-mamba install libsqlite sqlite
+mamba install libsqlite libsqlite-static sqlite
 ```
 
 It is possible to list all of the versions of `libsqlite` available on your platform with `conda`:
