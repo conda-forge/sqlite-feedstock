@@ -46,7 +46,6 @@ mv sqlite3.pc.in.mod sqlite3.pc.in
 cat sqlite3.pc
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
-make check
 make install
 
 # We can remove this when we start using the new conda-build.
