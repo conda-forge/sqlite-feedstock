@@ -37,12 +37,8 @@ mv sqlite3.pc.in.mod sqlite3.pc.in
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
-            --enable-threadsafe \
-            --enable-shared=yes \
-            --enable-readline \
-            --disable-editline \
             --disable-static \
-            --disable-tcl \
+            --disable-editline \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
