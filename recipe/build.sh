@@ -30,10 +30,6 @@ if [[ "$target_platform" == "linux-ppc64le" ]]; then
     export PPC64LE="--build=ppc64le-linux"
 fi
 
-# Workaround issue https://sqlite.org/forum/forumpost/36bbc86546
-sed "s/Libs\.private.*/Libs.private: @LIBS@/" < sqlite3.pc.in > sqlite3.pc.in.mod
-mv sqlite3.pc.in.mod sqlite3.pc.in
-
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
@@ -42,8 +38,6 @@ mv sqlite3.pc.in.mod sqlite3.pc.in
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
-
-cat sqlite3.pc
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
 make install
