@@ -10,3 +10,5 @@ libsqlite:
 - '3'
 target_platform:
 - win-64
+with_icu:
+- 'no'

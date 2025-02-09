@@ -15,17 +15,21 @@ source:
   sha256: 00a65114d697cfaa8fe0630281d76fd1b77afcd95cd5e40ec6a02cbbadbfea71
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - make  # [not win]
+    - icu  # [not win]
   host:
+    - icu # [with_icu == "yes"]
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
+  run_constrained:
+    - icu <0.0a0  # [with_icu != "yes" and not win]
 
 
 outputs:
@@ -47,10 +51,12 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - make  # [not win]
+        - icu  # [not win]
       host:
         # readline and ncurses are only required by the executable
         # not the library. Leaving it out of the host requirements
         # ensures it doesn't appear in the run section (through run_export)
+        - icu  # [not win]
         - zlib  # [not win]
     test:
       commands:
@@ -77,7 +83,9 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - make  # [not win]
+        - icu  # [not win]
       host:
+        - icu  # [not win]
         - ncurses  # [not win]
         - readline  # [not win]
         - zlib  # [not win]

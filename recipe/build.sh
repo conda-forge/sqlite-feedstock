@@ -48,6 +48,12 @@ else
     export PPC64LE=""
 fi
 
+if [[ "${with_icu}" == "yes" ]]; then
+    export ICU_FLAGS="--with-icu-config=${PREFIX}/bin/icu-config --enable-icu-collations"
+else
+    export ICU_FLAGS=""
+fi
+
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
@@ -56,6 +62,7 @@ fi
             --disable-static \
             --disable-static-shell \
             --with-readline-header="${PREFIX}/include/readline/readline.h" \
+            ${ICU_FLAGS} \
             CFLAGS="${CFLAGS} ${OPTIONS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}

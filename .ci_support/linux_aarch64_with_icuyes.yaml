@@ -14,6 +14,8 @@ channel_targets:
 - conda-forge main
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
+icu:
+- '73'
 libsqlite:
 - '3'
 ncurses:
@@ -22,5 +24,7 @@ readline:
 - '8'
 target_platform:
 - linux-aarch64
+with_icu:
+- 'yes'
 zlib:
 - '1'
