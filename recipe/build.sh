@@ -18,6 +18,7 @@ export CFLAGS="${CFLAGS} -DSQLITE_DQS=0 \
                          -DSQLITE_ENABLE_FTS4 \
                          -DSQLITE_ENABLE_FTS5 \
                          -DSQLITE_ENABLE_GEOPOLY \
+                         -DSQLITE_ENABLE_ICU \
                          -DSQLITE_ENABLE_JSON1 \
                          -DSQLITE_ENABLE_MATH_FUNCTIONS \
                          -DSQLITE_ENABLE_PREUPDATE_HOOK \
@@ -51,6 +52,7 @@ fi
             --enable-load-extension \
             --disable-static \
             --with-readline-header="${CONDA_PREFIX}/include/readline/readline.h" \
+            --with-icu-config="${PREFIX}/bin/icu-config" \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}

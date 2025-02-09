@@ -24,7 +24,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - make  # [not win]
+    - icu  # [not win]
   host:
+    - icu  # [not win]
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
@@ -49,10 +51,12 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - make  # [not win]
+        - icu  # [not win]
       host:
         # readline and ncurses are only required by the executable
         # not the library. Leaving it out of the host requirements
         # ensures it doesn't appear in the run section (through run_export)
+        - icu  # [not win]
         - zlib  # [not win]
     test:
       commands:
@@ -78,7 +82,9 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - make  # [not win]
+        - icu  # [not win]
       host:
+        - icu  # [not win]
         - ncurses  # [not win]
         - readline  # [not win]
         - zlib  # [not win]
