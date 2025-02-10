@@ -10,6 +10,11 @@ fi
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
+# Fix soname on osx
+if [[ $target_platform =~ osx.* ]]; then
+    export CFLAGS="${CFLAGS} --soname=libsqlite3.0.dylib"
+fi
+
 export CFLAGS="${CFLAGS} -DSQLITE_DQS=0 \
                          -DSQLITE_ENABLE_COLUMN_METADATA \
                          -DSQLITE_ENABLE_DBSTAT_VTAB \
