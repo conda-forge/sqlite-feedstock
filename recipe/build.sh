@@ -56,6 +56,8 @@ fi
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
 
+cat sqlite3.pc
+
 make -j${CPU_COUNT} ${VERBOSE_AT}
 make install
 
