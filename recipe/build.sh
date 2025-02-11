@@ -50,6 +50,7 @@ fi
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
+            --enable-load-extension \
             --disable-static \
             --disable-editline \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
