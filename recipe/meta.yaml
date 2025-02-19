@@ -17,14 +17,13 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - make  # [not win]
-    - libtool  # [not win]
   host:
     - ncurses  # [not win]
     - readline  # [not win]
@@ -50,7 +49,6 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - make  # [not win]
-        - libtool  # [not win]
       host:
         # readline and ncurses are only required by the executable
         # not the library. Leaving it out of the host requirements
@@ -80,7 +78,6 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - make  # [not win]
-        - libtool  # [not win]
       host:
         - ncurses  # [not win]
         - readline  # [not win]
@@ -110,3 +107,4 @@ extra:
     - msarahan
     - ocefpaf
     - mingwandroid
+    - flaviomartins
