@@ -7,9 +7,6 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
-# Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
-
 export CFLAGS="${CFLAGS} -DSQLITE_DQS=0 \
                          -DSQLITE_ENABLE_COLUMN_METADATA \
                          -DSQLITE_ENABLE_DBSTAT_VTAB \
