@@ -26,10 +26,12 @@ requirements:
     - make  # [not win]
     - icu  # [not win]
   host:
-    - icu  # [not win]
+    - icu # [with_icu == "yes"]
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
+  run_constrained:
+    - icu <0.0a0  # [with_icu != "yes" and not win]
 
 
 outputs:

@@ -18,7 +18,6 @@ export CFLAGS="${CFLAGS} -DSQLITE_DQS=0 \
                          -DSQLITE_ENABLE_FTS4 \
                          -DSQLITE_ENABLE_FTS5 \
                          -DSQLITE_ENABLE_GEOPOLY \
-                         -DSQLITE_ENABLE_ICU \
                          -DSQLITE_ENABLE_JSON1 \
                          -DSQLITE_ENABLE_MATH_FUNCTIONS \
                          -DSQLITE_ENABLE_PREUPDATE_HOOK \
@@ -45,6 +44,10 @@ if [[ "$target_platform" == "linux-ppc64le" ]]; then
     export PPC64LE="--build=ppc64le-linux"
 fi
 
+if [[ "${with_icu}" == "yes" ]]; then
+    export ICU_FLAGS="--with-icu-config=${PREFIX}/bin/icu-config --enable-icu-collations"
+fi
+
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
@@ -52,8 +55,7 @@ fi
             --enable-load-extension \
             --disable-static \
             --with-readline-header="${PREFIX}/include/readline/readline.h" \
-            --with-icu-config="${PREFIX}/bin/icu-config" \
-            --enable-icu-collations \
+            ${ICU_FLAGS} \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
