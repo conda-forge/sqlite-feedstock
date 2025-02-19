@@ -51,8 +51,9 @@ fi
             --enable-threadsafe \
             --enable-load-extension \
             --disable-static \
-            --with-readline-header="${CONDA_PREFIX}/include/readline/readline.h" \
+            --with-readline-header="${PREFIX}/include/readline/readline.h" \
             --with-icu-config="${PREFIX}/bin/icu-config" \
+            --enable-icu-collations \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
