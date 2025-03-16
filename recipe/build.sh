@@ -7,7 +7,7 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
-export CFLAGS="${CFLAGS} -DSQLITE_DQS=0 \
+export CFLAGS="${CFLAGS} \
                          -DSQLITE_ENABLE_COLUMN_METADATA \
                          -DSQLITE_ENABLE_DBSTAT_VTAB \
                          -DSQLITE_ENABLE_DESERIALIZE \

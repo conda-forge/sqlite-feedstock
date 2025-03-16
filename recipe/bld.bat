@@ -7,7 +7,6 @@ set PLATFORM=x64
 :: build the shell
 cl ^
     /O2 ^
-    -DSQLITE_DQS=0 ^
     -DSQLITE_ENABLE_COLUMN_METADATA ^
     -DSQLITE_ENABLE_DBSTAT_VTAB ^
     -DSQLITE_ENABLE_DESERIALIZE ^
@@ -41,7 +40,6 @@ cl ^
 :: build the dll
 cl ^
     /O2 ^
-    -DSQLITE_DQS=0 ^
     -DSQLITE_ENABLE_COLUMN_METADATA ^
     -DSQLITE_ENABLE_DBSTAT_VTAB ^
     -DSQLITE_ENABLE_DESERIALIZE ^
