@@ -1,9 +1,3 @@
-if "%ARCH%"=="32" (
-set PLATFORM=x86
-) else (
-set PLATFORM=x64
-)
-
 :: build the shell
 cl ^
     /O2 ^
