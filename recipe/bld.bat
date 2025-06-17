@@ -43,3 +43,14 @@ COPY sqlite3.dll  %LIBRARY_BIN% || exit 1
 COPY sqlite3.lib  %LIBRARY_LIB% || exit 1
 COPY sqlite3.h    %LIBRARY_INC% || exit 1
 COPY sqlite3ext.h %LIBRARY_INC% || exit 1
+
+:: build the tools
+nmake /f Makefile.msc sqldiff.exe OPTIONS="%OPTIONS%"
+if %ERRORLEVEL% neq 0 exit 1
+
+nmake /f Makefile.msc sqlite3_rsync.exe OPTIONS="%OPTIONS%"
+if %ERRORLEVEL% neq 0 exit 1
+
+
+COPY sqldiff.exe %LIBRARY_BIN% || exit 1
+COPY sqlite3_rsync.exe %LIBRARY_BIN% || exit 1
