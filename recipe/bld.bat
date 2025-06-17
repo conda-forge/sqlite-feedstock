@@ -30,12 +30,11 @@ set OPTIONS=-DSQLITE_DQS=3 ^
             -DSQLITE_USE_URI ^
             -DHAVE_ISNAN
 
-:: build the shell
-nmake /f Makefile.msc sqlite3.exe OPTIONS="-DSQLITE_EXPORTS %OPTIONS%"
-if %ERRORLEVEL% neq 0 exit 1
-
-:: build the dll
-nmake /f Makefile.msc sqlite3.dll USE_NATIVE_LIBPATHS=1 OPTIONS="%OPTIONS%"
+:: Build DLL and shell executable
+nmake /f Makefile.msc DYNAMIC_SHELL=1 ^
+                      USE_NATIVE_LIBPATHS=1 ^
+                      MINIMAL_AMALGAMATION=1 ^
+                      OPTIONS="%OPTIONS%"
 if %ERRORLEVEL% neq 0 exit 1
 
 
