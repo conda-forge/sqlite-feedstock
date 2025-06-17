@@ -60,15 +60,26 @@ fi
             --enable-threadsafe \
             --enable-load-extension \
             --disable-static \
-            --disable-static-shell \
+            --dynlink-tools \
+            --with-tclsh="${PREFIX}/bin/tclsh" \
             --with-readline-header="${PREFIX}/include/readline/readline.h" \
             ${ICU_FLAGS} \
             CFLAGS="${CFLAGS} ${OPTIONS} -I${PREFIX}/include" \
+            CPPFLAGS="${CPPFLAGS} ${OPTIONS}" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
 
 make -j${CPU_COUNT}
 make install
+
+make -j${CPU_COUNT} sqldiff
+install -m755 sqldiff "${PREFIX}/bin/sqldiff"
+
+make -j${CPU_COUNT} sqlite3_rsync
+install -m755 sqlite3_rsync "${PREFIX}/bin/sqlite3_rsync"
+
+make -j${CPU_COUNT} sqlite3_analyzer
+install -m755 sqlite3_analyzer "${PREFIX}/bin/sqlite3_analyze"
 
 # We can remove this when we start using the new conda-build.
 find $PREFIX -name '*.la' -delete

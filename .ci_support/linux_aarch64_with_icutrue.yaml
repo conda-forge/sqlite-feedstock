@@ -24,6 +24,8 @@ readline:
 - '8'
 target_platform:
 - linux-aarch64
+tk:
+- '8.6'
 with_icu:
 - true
 zlib:
