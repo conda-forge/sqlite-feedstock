@@ -49,7 +49,7 @@ fi
             --enable-threadsafe \
             --enable-load-extension \
             --disable-static \
-            --with-readline-header="${CONDA_PREFIX}/include/readline/readline.h" \
+            --with-readline-header="${PREFIX}/include/readline/readline.h" \
             CFLAGS="${CFLAGS} ${OPTIONS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
