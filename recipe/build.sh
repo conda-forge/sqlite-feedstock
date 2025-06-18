@@ -58,7 +58,7 @@ fi
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
 
-make -j${CPU_COUNT} ${VERBOSE_AT}
+make -j${CPU_COUNT}
 make install
 
 # We can remove this when we start using the new conda-build.
