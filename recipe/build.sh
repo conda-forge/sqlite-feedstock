@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 # Prevent running ldconfig when cross-compiling.
 if [[ "${BUILD}" != "${HOST}" ]]; then
   echo "#!/usr/bin/env bash" > ldconfig
@@ -41,6 +43,8 @@ fi
 
 if [[ "$target_platform" == "linux-ppc64le" ]]; then
     export PPC64LE="--build=ppc64le-linux"
+else
+    export PPC64LE=""
 fi
 
 ./configure --prefix=${PREFIX} \

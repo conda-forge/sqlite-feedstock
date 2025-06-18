@@ -1,3 +1,5 @@
+@echo on
+
 :: Define common options
 set OPTIONS=-DSQLITE_ENABLE_COLUMN_METADATA ^
             -DSQLITE_ENABLE_DBSTAT_VTAB ^
@@ -29,9 +31,12 @@ set OPTIONS=-DSQLITE_ENABLE_COLUMN_METADATA ^
 
 :: build the shell
 nmake /f Makefile.msc sqlite3.exe OPTIONS="-DSQLITE_EXPORTS %OPTIONS%"
+if %ERRORLEVEL% neq 0 exit 1
 
 :: build the dll
 nmake /f Makefile.msc sqlite3.dll USE_NATIVE_LIBPATHS=1 OPTIONS="%OPTIONS%"
+if %ERRORLEVEL% neq 0 exit 1
+
 
 COPY sqlite3.exe  %LIBRARY_BIN% || exit 1
 COPY sqlite3.dll  %LIBRARY_BIN% || exit 1
