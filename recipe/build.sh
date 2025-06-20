@@ -54,6 +54,7 @@ fi
             --enable-threadsafe \
             --enable-load-extension \
             --disable-static \
+            --disable-static-shell \
             --with-readline-header="${PREFIX}/include/readline/readline.h" \
             CFLAGS="${CFLAGS} ${OPTIONS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
