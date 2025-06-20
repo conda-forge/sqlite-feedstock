@@ -88,6 +88,8 @@ outputs:
     test:
       commands:
         - sqlite3 --version
+        - echo "PRAGMA compile_options;" | sqlite3  # [not win]
+        - echo PRAGMA compile_options; | sqlite3    # [win]
 
 about:
   home: http://www.sqlite.org/
