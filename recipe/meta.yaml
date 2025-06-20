@@ -24,7 +24,7 @@ requirements:
     - make  # [not win]
     - icu  # [not win]
   host:
-    - icu # [with_icu == "yes"]
+    - icu  # [with_icu == "yes"]
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
@@ -56,7 +56,7 @@ outputs:
         # readline and ncurses are only required by the executable
         # not the library. Leaving it out of the host requirements
         # ensures it doesn't appear in the run section (through run_export)
-        - icu  # [not win]
+        - icu  # [with_icu == "yes"]
         - zlib  # [not win]
     test:
       commands:
@@ -85,7 +85,7 @@ outputs:
         - make  # [not win]
         - icu  # [not win]
       host:
-        - icu  # [not win]
+        - icu  # [with_icu == "yes"]
         - ncurses  # [not win]
         - readline  # [not win]
         - zlib  # [not win]
