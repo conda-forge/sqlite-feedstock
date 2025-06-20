@@ -35,7 +35,8 @@ export OPTIONS="-DSQLITE_ENABLE_COLUMN_METADATA \
                 -DSQLITE_SOUNDEX \
                 -DSQLITE_STRICT_SUBTYPE=1 \
                 -DSQLITE_THREADSAFE=1 \
-                -DSQLITE_USE_URI"
+                -DSQLITE_USE_URI \
+                -DHAVE_ISNAN"
 
 if [[ $target_platform =~ linux.* ]]; then
     export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"

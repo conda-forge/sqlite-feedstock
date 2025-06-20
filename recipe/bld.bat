@@ -27,7 +27,8 @@ set OPTIONS=-DSQLITE_ENABLE_COLUMN_METADATA ^
             -DSQLITE_SOUNDEX ^
             -DSQLITE_STRICT_SUBTYPE=1 ^
             -DSQLITE_THREADSAFE=1 ^
-            -DSQLITE_USE_URI
+            -DSQLITE_USE_URI ^
+            -DHAVE_ISNAN
 
 :: build the shell
 nmake /f Makefile.msc sqlite3.exe OPTIONS="-DSQLITE_EXPORTS %OPTIONS%"
