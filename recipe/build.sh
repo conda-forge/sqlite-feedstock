@@ -48,7 +48,7 @@ else
     export PPC64LE=""
 fi
 
-if [[ "${with_icu}" == "yes" ]]; then
+if [[ "${with_icu}" == "true" ]]; then
     export ICU_FLAGS="--with-icu-config=${PREFIX}/bin/icu-config --enable-icu-collations"
 else
     export ICU_FLAGS=""

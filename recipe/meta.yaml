@@ -17,7 +17,7 @@ source:
 build:
   number: 5
   track_features:
-    - sqlite_with_icu   # [with_icu == "yes"]
+    - sqlite_with_icu   # [with_icu]
 
 requirements:
   build:
@@ -26,12 +26,12 @@ requirements:
     - make  # [not win]
     - icu  # [not win]
   host:
-    - icu  # [with_icu == "yes"]
+    - icu  # [with_icu]
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
   run_constrained:
-    - icu <0.0a0  # [with_icu != "yes" and not win]
+    - icu <0.0a0  # [not with_icu and not win]
 
 
 outputs:
@@ -58,7 +58,7 @@ outputs:
         # readline and ncurses are only required by the executable
         # not the library. Leaving it out of the host requirements
         # ensures it doesn't appear in the run section (through run_export)
-        - icu  # [with_icu == "yes"]
+        - icu  # [with_icu]
         - zlib  # [not win]
     test:
       commands:
@@ -87,7 +87,7 @@ outputs:
         - make  # [not win]
         - icu  # [not win]
       host:
-        - icu  # [with_icu == "yes"]
+        - icu  # [with_icu]
         - ncurses  # [not win]
         - readline  # [not win]
         - zlib  # [not win]

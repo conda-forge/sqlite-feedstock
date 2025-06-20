@@ -23,8 +23,8 @@ ncurses:
 readline:
 - '8'
 target_platform:
-- linux-ppc64le
+- linux-aarch64
 with_icu:
-- 'no'
+- false
 zlib:
 - '1'

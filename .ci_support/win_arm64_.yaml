@@ -11,4 +11,4 @@ libsqlite:
 target_platform:
 - win-arm64
 with_icu:
-- 'no'
+- false
