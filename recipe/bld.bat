@@ -1,7 +1,8 @@
 @echo on
 
 :: Define common options
-set OPTIONS=-DSQLITE_ENABLE_COLUMN_METADATA ^
+set OPTIONS=-DSQLITE_DQS=3 ^
+            -DSQLITE_ENABLE_COLUMN_METADATA ^
             -DSQLITE_ENABLE_DBSTAT_VTAB ^
             -DSQLITE_ENABLE_DESERIALIZE ^
             -DSQLITE_ENABLE_EXPLAIN_COMMENTS ^
@@ -23,11 +24,11 @@ set OPTIONS=-DSQLITE_ENABLE_COLUMN_METADATA ^
             -DSQLITE_LIKE_DOESNT_MATCH_BLOBS ^
             -DSQLITE_MAX_EXPR_DEPTH=10000 ^
             -DSQLITE_MAX_VARIABLE_NUMBER=250000 ^
-            -DSQLITE_SECURE_DELETE ^
             -DSQLITE_SOUNDEX ^
             -DSQLITE_STRICT_SUBTYPE=1 ^
             -DSQLITE_THREADSAFE=1 ^
-            -DSQLITE_USE_URI
+            -DSQLITE_USE_URI ^
+            -DHAVE_ISNAN
 
 :: build the shell
 nmake /f Makefile.msc sqlite3.exe OPTIONS="-DSQLITE_EXPORTS %OPTIONS%"

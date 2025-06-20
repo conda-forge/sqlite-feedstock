@@ -9,12 +9,13 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
-export OPTIONS="-DSQLITE_ENABLE_COLUMN_METADATA \
+export OPTIONS="-DSQLITE_DQS=3 \
+                -DSQLITE_ENABLE_COLUMN_METADATA \
                 -DSQLITE_ENABLE_DBSTAT_VTAB \
                 -DSQLITE_ENABLE_DESERIALIZE \
                 -DSQLITE_ENABLE_EXPLAIN_COMMENTS \
                 -DSQLITE_ENABLE_FTS3 \
-                -DSQlITE_ENABLE_FTS3_PARENTHESIS \
+                -DSQLITE_ENABLE_FTS3_PARENTHESIS \
                 -DSQLITE_ENABLE_FTS3_TOKENIZER \
                 -DSQLITE_ENABLE_FTS4 \
                 -DSQLITE_ENABLE_FTS5 \
@@ -31,11 +32,11 @@ export OPTIONS="-DSQLITE_ENABLE_COLUMN_METADATA \
                 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS \
                 -DSQLITE_MAX_EXPR_DEPTH=10000 \
                 -DSQLITE_MAX_VARIABLE_NUMBER=250000 \
-                -DSQLITE_SECURE_DELETE \
                 -DSQLITE_SOUNDEX \
                 -DSQLITE_STRICT_SUBTYPE=1 \
                 -DSQLITE_THREADSAFE=1 \
-                -DSQLITE_USE_URI"
+                -DSQLITE_USE_URI \
+                -DHAVE_ISNAN"
 
 if [[ $target_platform =~ linux.* ]]; then
     export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
