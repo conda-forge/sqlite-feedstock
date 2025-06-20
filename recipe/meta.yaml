@@ -5,6 +5,7 @@
 {% set minor = version_split[1]|int * 10 %}
 {% set bugfix = version_split[2]|int * 100 %}
 {% set version_coded=(major ~ (("%03d" % minor)|string) ~ (("%03d" % bugfix)|string)) %}
+{% set build_number = 5 %}
 
 package:
   name: sqlite-split
@@ -15,7 +16,7 @@ source:
   sha256: 00a65114d697cfaa8fe0630281d76fd1b77afcd95cd5e40ec6a02cbbadbfea71
 
 build:
-  number: 5
+  number: {{ build_number if with_icu else build_number + 100 }}
   track_features:
     - sqlite_with_icu   # [with_icu]
 
