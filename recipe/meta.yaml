@@ -17,7 +17,7 @@ source:
     - expose_symbols.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -38,8 +38,8 @@ outputs:
         #    https://abi-laboratory.pro/tracker/timeline/sqlite/
         - {{ pin_subpackage('libsqlite') }}
     files:
-      - include/sqlite*.h          # [unix]
       - lib/libsqlite*             # [unix]
+      - include/sqlite*.h          # [unix]
       - lib/pkgconfig/sqlite3.pc   # [unix]
       - Library\bin\sqlite3.dll    # [win]
       - Library\lib\sqlite3.lib    # [win]
@@ -56,14 +56,15 @@ outputs:
         - zlib  # [not win]
     test:
       commands:
-        - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1  # [win]
-        - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1  # [win]
         - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
         - test ! -f $PREFIX/lib/libsqlite3.a  # [not win]
-        - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
-        - if not exist %PREFIX%\\Library\include\sqlite3ext.h exit 1  # [win]
         - test -f $PREFIX/include/sqlite3.h  # [not win]
         - test -f $PREFIX/include/sqlite3ext.h  # [not win]
+        - test -f $PREFIX/lib/pkgconfig/sqlite3.pc  # [not win]
+        - if not exist %PREFIX%\\Library\bin\sqlite3.dll exit 1  # [win]
+        - if not exist %PREFIX%\\Library\lib\sqlite3.lib exit 1  # [win]
+        - if not exist %PREFIX%\\Library\include\sqlite3.h exit 1  # [win]
+        - if not exist %PREFIX%\\Library\include\sqlite3ext.h exit 1  # [win]
   - name: sqlite
     build:
       run_exports:
