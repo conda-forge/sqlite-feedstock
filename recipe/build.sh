@@ -31,7 +31,6 @@ export OPTIONS="-DSQLITE_ENABLE_COLUMN_METADATA \
                 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS \
                 -DSQLITE_MAX_EXPR_DEPTH=10000 \
                 -DSQLITE_MAX_VARIABLE_NUMBER=250000 \
-                -DSQLITE_SECURE_DELETE \
                 -DSQLITE_SOUNDEX \
                 -DSQLITE_STRICT_SUBTYPE=1 \
                 -DSQLITE_THREADSAFE=1 \
