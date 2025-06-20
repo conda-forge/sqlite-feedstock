@@ -16,6 +16,8 @@ source:
 
 build:
   number: 5
+  track_features:
+    - sqlite_with_icu   # [with_icu == "yes"]
 
 requirements:
   build:
