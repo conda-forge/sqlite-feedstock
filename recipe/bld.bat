@@ -31,11 +31,11 @@ set OPTIONS=-DSQLITE_DQS=3 ^
             -DHAVE_ISNAN
 
 :: build the shell
-nmake /f Makefile.msc sqlite3.exe OPTIONS="-DSQLITE_EXPORTS %OPTIONS%"
+nmake /f Makefile.msc sqlite3.exe "OPTS=-DSQLITE_EXPORTS %OPTIONS%"
 if %ERRORLEVEL% neq 0 exit 1
 
 :: build the dll
-nmake /f Makefile.msc sqlite3.dll USE_NATIVE_LIBPATHS=1 OPTIONS="%OPTIONS%"
+nmake /f Makefile.msc sqlite3.dll USE_NATIVE_LIBPATHS=1 "OPTS=%OPTIONS%"
 if %ERRORLEVEL% neq 0 exit 1
 
 
