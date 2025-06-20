@@ -9,7 +9,8 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
-export OPTIONS="-DSQLITE_ENABLE_COLUMN_METADATA \
+export OPTIONS="-DSQLITE_DQS=3 \
+                -DSQLITE_ENABLE_COLUMN_METADATA \
                 -DSQLITE_ENABLE_DBSTAT_VTAB \
                 -DSQLITE_ENABLE_DESERIALIZE \
                 -DSQLITE_ENABLE_EXPLAIN_COMMENTS \
