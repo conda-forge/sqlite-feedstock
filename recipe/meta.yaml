@@ -7,6 +7,7 @@
 {% set version_coded=(major ~ (("%03d" % minor)|string) ~ (("%03d" % bugfix)|string)) %}
 {% set build_number = 5 %}
 {% if not with_icu %}
+# deprioritize with_icu variant via build number
 {% set build_number = build_number + 100 %}
 {% endif %}
 
@@ -20,8 +21,6 @@ source:
 
 build:
   number: {{ build_number }}
-  track_features:
-    - sqlite_with_icu   # [with_icu]
 
 requirements:
   build:
