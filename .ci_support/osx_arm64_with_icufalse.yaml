@@ -15,7 +15,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 icu:
-- '73'
+- '75'
 libsqlite:
 - '3'
 macos_machine:
