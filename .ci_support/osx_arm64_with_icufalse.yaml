@@ -14,6 +14,8 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+icu:
+- '73'
 libsqlite:
 - '3'
 macos_machine:
@@ -24,5 +26,7 @@ readline:
 - '8'
 target_platform:
 - osx-arm64
+with_icu:
+- false
 zlib:
 - '1'

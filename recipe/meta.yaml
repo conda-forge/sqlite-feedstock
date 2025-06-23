@@ -5,6 +5,11 @@
 {% set minor = version_split[1]|int * 10 %}
 {% set bugfix = version_split[2]|int * 100 %}
 {% set version_coded=(major ~ (("%03d" % minor)|string) ~ (("%03d" % bugfix)|string)) %}
+{% set build_number = 5 %}
+{% if not with_icu %}
+# deprioritize with_icu variant via build number
+{% set build_number = build_number + 100 %}
+{% endif %}
 
 package:
   name: sqlite-split
@@ -15,7 +20,7 @@ source:
   sha256: 00a65114d697cfaa8fe0630281d76fd1b77afcd95cd5e40ec6a02cbbadbfea71
 
 build:
-  number: 4
+  number: {{ build_number }}
 
 requirements:
   build:
@@ -23,9 +28,12 @@ requirements:
     - {{ stdlib("c") }}
     - make  # [not win]
   host:
+    - icu  # [with_icu]
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
+  run_constrained:
+    - icu <0.0a0  # [not with_icu and not win]
 
 
 outputs:
@@ -51,6 +59,7 @@ outputs:
         # readline and ncurses are only required by the executable
         # not the library. Leaving it out of the host requirements
         # ensures it doesn't appear in the run section (through run_export)
+        - icu  # [with_icu]
         - zlib  # [not win]
     test:
       commands:
@@ -78,6 +87,7 @@ outputs:
         - {{ stdlib("c") }}
         - make  # [not win]
       host:
+        - icu  # [with_icu]
         - ncurses  # [not win]
         - readline  # [not win]
         - zlib  # [not win]
