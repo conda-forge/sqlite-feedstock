@@ -33,8 +33,7 @@ set OPTIONS=-DSQLITE_DQS=3 ^
 :: Build DLL and shell executable
 nmake /f Makefile.msc DYNAMIC_SHELL=1 ^
                       USE_NATIVE_LIBPATHS=1 ^
-                      MINIMAL_AMALGAMATION=1 ^
-                      OPTIONS="%OPTIONS%"
+                      OPT_FEATURE_FLAGS="%OPTIONS%"
 if %ERRORLEVEL% neq 0 exit 1
 
 
