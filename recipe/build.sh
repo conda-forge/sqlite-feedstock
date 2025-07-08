@@ -40,6 +40,9 @@ export OPTIONS="-DSQLITE_DQS=3 \
 
 if [[ $target_platform =~ linux.* ]]; then
     export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
+    export SONAME_SWITCH="--soname=legacy"
+else
+    export SONAME_SWITCH=""
 fi
 
 if [[ "$target_platform" == "linux-ppc64le" ]]; then
@@ -62,6 +65,7 @@ fi
             --disable-static \
             --disable-static-shell \
             --with-readline-header="${PREFIX}/include/readline/readline.h" \
+            ${SONAME_SWITCH} \
             ${ICU_FLAGS} \
             CFLAGS="${CFLAGS} ${OPTIONS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
