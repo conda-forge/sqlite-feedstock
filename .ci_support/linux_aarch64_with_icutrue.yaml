@@ -16,8 +16,6 @@ docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
 icu:
 - '75'
-libsqlite:
-- '3'
 ncurses:
 - '6'
 readline:
