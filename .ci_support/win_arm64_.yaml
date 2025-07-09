@@ -8,6 +8,8 @@ channel_targets:
 - conda-forge main
 icu:
 - '75'
+libsqlite:
+- '3'
 target_platform:
 - win-arm64
 with_icu:
