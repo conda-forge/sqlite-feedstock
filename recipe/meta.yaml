@@ -1,6 +1,6 @@
-{% set version = "3.45.3" %}
+{% set version = "3.50.2" %}
 {% set build = 0 %}
-{% set year = "2024" %}
+{% set year = "2025" %}
 {% set version_split = version.split(".") %}
 {% set major = version_split[0] %}
 {% set minor = version_split[1]|int * 10 %}
@@ -13,7 +13,7 @@ package:
 
 source:
   url: https://www.sqlite.org/{{ year }}/sqlite-autoconf-{{ version_coded }}.tar.gz
-  sha256: b2809ca53124c19c60f42bf627736eae011afdcc205bb48270a5ee9a38191531
+  sha256: 84a616ffd31738e4590b65babb3a9e1ef9370f3638e36db220ee0e73f8ad2156
   patches:
     - expose_symbols.patch  # [win]
 
@@ -27,8 +27,8 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - make      # [not win]
-    - libtool   # [not win]
     - m2-patch  # [win]
   host:
     - ncurses 6.4  # [not win]

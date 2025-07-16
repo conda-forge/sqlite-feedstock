@@ -7,9 +7,6 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
-# Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
-
 export CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 \
                              -DSQLITE_ENABLE_UNLOCK_NOTIFY \
                              -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
@@ -25,25 +22,17 @@ if [[ $target_platform =~ linux.* ]]; then
     export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
 fi
 
-if [[ "$target_platform" == "linux-ppc64le" ]]; then
-    export PPC64LE="--build=ppc64le-linux"
-fi
-
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
             --enable-threadsafe \
-            --enable-shared=yes \
             --enable-readline \
             --disable-editline \
             --disable-static \
-            --disable-tcl \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
-            LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
-            ${PPC64LE}
+            LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
-make check
 make install
 
 # We can remove this when we start using the new conda-build.
