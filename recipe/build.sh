@@ -18,8 +18,13 @@ export CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1 \
                              -DSQLITE_ENABLE_FTS5 \
                              -DSQLITE_ENABLE_RTREE=1"
 
+export SONAME_SWITCH=""
 if [[ $target_platform =~ linux.* ]]; then
     export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
+    # Following upstream project build system migration to setuptools in v3.49.0, soname is no longer
+    # set for shared object. Use a flag to restore previous soname. "legacy" value
+    # sets soname to its historical value of "libsqlite3.so.0".
+    export SONAME_SWITCH="--soname=legacy"
 fi
 
 ./configure --prefix=${PREFIX} \
@@ -29,6 +34,7 @@ fi
             --enable-readline \
             --disable-editline \
             --disable-static \
+            ${SONAME_SWITCH} \
             CFLAGS="${CFLAGS} -I${PREFIX}/include" \
             LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
 
