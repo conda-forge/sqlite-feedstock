@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sqlite-feedstoc
 
 Home: http://www.sqlite.org/
 
-Package license: [Unlicense](http://www.sqlite.org/copyright.html)
+Package license: [blessing](http://www.sqlite.org/copyright.html)
 
 Summary: Implements a self-contained, zero-configuration, SQL database engine
 
