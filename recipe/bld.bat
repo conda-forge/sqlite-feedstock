@@ -42,4 +42,30 @@ COPY sqlite3.dll  %LIBRARY_BIN% || exit 1
 COPY sqlite3.lib  %LIBRARY_LIB% || exit 1
 COPY sqlite3.h    %LIBRARY_INC% || exit 1
 COPY sqlite3ext.h %LIBRARY_INC% || exit 1
-COPY sqlite3.pc   %LIBRARY_LIB%\pkgconfig\ || exit 1
+
+if not exist %LIBRARY_LIB%\pkgconfig mkdir %LIBRARY_LIB%\pkgconfig || exit 1
+
+if "%PKG_VERSION%"=="" (
+  echo PKG_VERSION is not set.
+  exit 1
+)
+
+if not exist sqlite3.pc.in (
+  echo Missing sqlite3.pc.in in source directory.
+  exit 1
+)
+
+powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass ^
+  -Command "$pc = Get-Content -Raw 'sqlite3.pc.in';" ^
+           "$pc = $pc -replace '@prefix@','${pcfiledir}/../..';" ^
+           "$pc = $pc -replace '@exec_prefix@','${prefix}';" ^
+           "$pc = $pc -replace '@libdir@','${prefix}/lib';" ^
+           "$pc = $pc -replace '@includedir@','${prefix}/include';" ^
+           "$pc = $pc -replace '@PACKAGE_VERSION@','%PKG_VERSION%';" ^
+           "$pc = $pc -replace '@LDFLAGS_MATH@','';" ^
+           "$pc = $pc -replace '@LDFLAGS_ZLIB@','';" ^
+           "$pc = $pc -replace '@LDFLAGS_DLOPEN@','';" ^
+           "$pc = $pc -replace '@LDFLAGS_PTHREAD@','';" ^
+           "$pc = $pc -replace '@LDFLAGS_ICU@','';" ^
+           "Set-Content -Path '%LIBRARY_LIB%\\pkgconfig\\sqlite3.pc' -Value $pc -NoNewline"
+if %ERRORLEVEL% neq 0 exit 1
