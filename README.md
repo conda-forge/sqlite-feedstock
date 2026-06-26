@@ -57,6 +57,20 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>osx_arm64_with_icufalse</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1960&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sqlite-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_with_icufalse" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_with_icutrue</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1960&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sqlite-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_with_icutrue" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>win_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1960&branchName=main">
