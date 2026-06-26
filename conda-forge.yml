@@ -1,6 +1,7 @@
 provider:
   linux_aarch64: default
   osx_arm64: default
+  win: azure
 build_platform:
   linux_ppc64le: linux_64
   win_arm64: win_64
@@ -10,6 +11,4 @@ conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
-provider:
-  win: azure
 test: native_and_emulated
