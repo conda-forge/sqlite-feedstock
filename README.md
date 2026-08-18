@@ -245,8 +245,8 @@ Feedstock Maintainers
 =====================
 
 * [@flaviomartins](https://github.com/flaviomartins/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@jakirkham](https://github.com/jakirkham/)
-* [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 
