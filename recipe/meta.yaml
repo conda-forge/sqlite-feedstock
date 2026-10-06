@@ -5,7 +5,7 @@
 {% set minor = version_split[1]|int * 10 %}
 {% set bugfix = version_split[2]|int * 100 %}
 {% set version_coded=(major ~ (("%03d" % minor)|string) ~ (("%03d" % bugfix)|string)) %}
-{% set build_number = 2 %}
+{% set build_number = 3 %}
 {% if with_icu|string|lower == "false" %}
 # deprioritize with_icu variant via build number
 {% set build_number = build_number + 100 %}
@@ -32,8 +32,6 @@ requirements:
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
-  run_constrained:
-    - icu <0.0a0  # [not with_icu and not win]
 
 
 outputs:
@@ -62,6 +60,8 @@ outputs:
         # ensures it doesn't appear in the run section (through run_export)
         - icu  # [with_icu]
         - zlib  # [not win]
+      run_constrained:
+        - icu <0.0a0  # [not with_icu and not win]
     test:
       commands:
         - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
@@ -95,6 +95,10 @@ outputs:
         - zlib  # [not win]
       run:
         - {{ pin_subpackage('libsqlite', exact=True) }}
+      # sqlite depends on libsqlite exactly, so the constraint applies
+      # to the CLI package too
+      # run_constrained:
+      #  - icu <0.0a0  # [not with_icu and not win]
     test:
       commands:
         - sqlite3 --version
