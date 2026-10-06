@@ -32,8 +32,6 @@ requirements:
     - ncurses  # [not win]
     - readline  # [not win]
     - zlib  # [not win]
-  run_constrained:
-    - icu <0.0a0  # [not with_icu and not win]
 
 
 outputs:
@@ -62,6 +60,8 @@ outputs:
         # ensures it doesn't appear in the run section (through run_export)
         - icu  # [with_icu]
         - zlib  # [not win]
+      run_constrained:
+        - icu <0.0a0  # [not with_icu and not win]
     test:
       commands:
         - test -f $PREFIX/lib/libsqlite3${SHLIB_EXT}  # [not win]
@@ -95,6 +95,10 @@ outputs:
         - zlib  # [not win]
       run:
         - {{ pin_subpackage('libsqlite', exact=True) }}
+      # sqlite depends on libsqlite exactly, so the constraint applies
+      # to the CLI package too
+      # run_constrained:
+      #  - icu <0.0a0  # [not with_icu and not win]
     test:
       commands:
         - sqlite3 --version
