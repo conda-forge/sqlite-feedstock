@@ -104,6 +104,10 @@ outputs:
         - sqlite3 --version
         - echo "PRAGMA compile_options;" | sqlite3  # [not win]
         - echo PRAGMA compile_options; | sqlite3    # [win]
+        - ldd $PREFIX/bin/sqlite3       # [linux and build_platform == target_platform]
+        - otool -L $PREFIX/bin/sqlite3  # [osx and build_platform == target_platform]
+        - ldd $PREFIX/bin/sqlite3 | grep -q libreadline       # [linux and build_platform == target_platform]
+        - otool -L $PREFIX/bin/sqlite3 | grep -q libreadline  # [osx and build_platform == target_platform]
 
 about:
   home: http://www.sqlite.org/
