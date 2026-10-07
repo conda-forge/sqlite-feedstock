@@ -9,8 +9,9 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
-export OPTIONS="-DSQLITE_DQS=3 \
-                -DSQLITE_ENABLE_COLUMN_METADATA \
+# Define common options
+# SQLITE_DQS defaults to 3 in libsqlite; the shell defaults to 0.
+export OPTIONS="-DSQLITE_ENABLE_COLUMN_METADATA \
                 -DSQLITE_ENABLE_DBSTAT_VTAB \
                 -DSQLITE_ENABLE_DESERIALIZE \
                 -DSQLITE_ENABLE_EXPLAIN_COMMENTS \

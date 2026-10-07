@@ -1,8 +1,8 @@
 @echo on
 
 :: Define common options
-set OPTIONS=-DSQLITE_DQS=3 ^
-            -DSQLITE_ENABLE_COLUMN_METADATA ^
+:: SQLITE_DQS defaults to 3 in libsqlite; the shell defaults to 0.
+set OPTIONS=-DSQLITE_ENABLE_COLUMN_METADATA ^
             -DSQLITE_ENABLE_DBSTAT_VTAB ^
             -DSQLITE_ENABLE_DESERIALIZE ^
             -DSQLITE_ENABLE_EXPLAIN_COMMENTS ^

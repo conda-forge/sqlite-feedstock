@@ -108,6 +108,9 @@ outputs:
         - otool -L $PREFIX/bin/sqlite3  # [osx and build_platform == target_platform]
         - ldd $PREFIX/bin/sqlite3 | grep -q libreadline       # [linux and build_platform == target_platform]
         - otool -L $PREFIX/bin/sqlite3 | grep -q libreadline  # [osx and build_platform == target_platform]
+        # Verify DQS=3 behavior in both DML and DDL through the libsqlite dependency.
+        - 'sqlite3 -bail :memory: ''SELECT "dqs_probe"; CREATE TABLE t(x CHECK (x = "dqs_probe"));'''  # [not win]
+        - 'echo SELECT "dqs_probe"; CREATE TABLE t(x CHECK (x = "dqs_probe")); | sqlite3 -bail :memory:'  # [win]
 
 about:
   home: http://www.sqlite.org/
