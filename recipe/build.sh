@@ -39,7 +39,7 @@ export OPTIONS="-DSQLITE_DQS=3 \
                 -DHAVE_ISNAN"
 
 if [[ $target_platform =~ linux.* ]]; then
-    export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
+    export CPPFLAGS="${CPPFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
     export SONAME_SWITCH="--soname=legacy"
 else
     export SONAME_SWITCH=""
@@ -57,6 +57,9 @@ else
     export ICU_FLAGS=""
 fi
 
+export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include ${OPTIONS}"
+export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
@@ -67,8 +70,6 @@ fi
             --with-readline-header="${PREFIX}/include/readline/readline.h" \
             ${SONAME_SWITCH} \
             ${ICU_FLAGS} \
-            CFLAGS="${CFLAGS} ${OPTIONS} -I${PREFIX}/include" \
-            LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
 
 make -j${CPU_COUNT}
