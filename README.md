@@ -7,15 +7,15 @@ Home: http://www.sqlite.org/
 
 Package license: [blessing](http://www.sqlite.org/copyright.html)
 
-Summary: Implements a self-contained, zero-configuration, SQL database engine
+Summary: C library that implements an SQL database engine
 
-Development: https://github.com/mackyle/sqlite
+Development: https://www.sqlite.org/src/dir?ci=trunk
 
 Documentation: http://www.sqlite.org/docs.html
 
-SQLite is a self-contained, high-reliability, embedded, full-featured,
-public-domain, SQL database engine.It is the most used database engine
-in the world.
+SQLite is a small, fast, serverless SQL database engine. Programs that
+link with this library get SQL database access without running a
+separate RDBMS process.
 
 
 Current build status
