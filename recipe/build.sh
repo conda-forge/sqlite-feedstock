@@ -9,8 +9,9 @@ if [[ "${BUILD}" != "${HOST}" ]]; then
   export PATH=${PWD}:$PATH
 fi
 
-export OPTIONS="-DSQLITE_DQS=3 \
-                -DSQLITE_ENABLE_COLUMN_METADATA \
+# Define common options
+# SQLITE_DQS defaults to 3 in libsqlite; the shell defaults to 0.
+export OPTIONS="-DSQLITE_ENABLE_COLUMN_METADATA \
                 -DSQLITE_ENABLE_DBSTAT_VTAB \
                 -DSQLITE_ENABLE_DESERIALIZE \
                 -DSQLITE_ENABLE_EXPLAIN_COMMENTS \
@@ -39,7 +40,7 @@ export OPTIONS="-DSQLITE_DQS=3 \
                 -DHAVE_ISNAN"
 
 if [[ $target_platform =~ linux.* ]]; then
-    export CFLAGS="${CFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
+    export CPPFLAGS="${CPPFLAGS} -DHAVE_PREAD64 -DHAVE_PWRITE64"
     export SONAME_SWITCH="--soname=legacy"
 else
     export SONAME_SWITCH=""
@@ -57,6 +58,9 @@ else
     export ICU_FLAGS=""
 fi
 
+export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include ${OPTIONS}"
+export LDFLAGS="${LDFLAGS} -L${PREFIX}/lib"
+
 ./configure --prefix=${PREFIX} \
             --build=${BUILD} \
             --host=${HOST} \
@@ -67,8 +71,6 @@ fi
             --with-readline-header="${PREFIX}/include/readline/readline.h" \
             ${SONAME_SWITCH} \
             ${ICU_FLAGS} \
-            CFLAGS="${CFLAGS} ${OPTIONS} -I${PREFIX}/include" \
-            LDFLAGS="${LDFLAGS} -L${PREFIX}/lib" \
             ${PPC64LE}
 
 make -j${CPU_COUNT}

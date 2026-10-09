@@ -5,7 +5,7 @@
 {% set minor = version_split[1]|int * 10 %}
 {% set bugfix = version_split[2]|int * 100 %}
 {% set version_coded=(major ~ (("%03d" % minor)|string) ~ (("%03d" % bugfix)|string)) %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% if with_icu|string|lower == "false" %}
 # deprioritize with_icu variant via build number
 {% set build_number = build_number + 100 %}
@@ -104,19 +104,26 @@ outputs:
         - sqlite3 --version
         - echo "PRAGMA compile_options;" | sqlite3  # [not win]
         - echo PRAGMA compile_options; | sqlite3    # [win]
+        - ldd $PREFIX/bin/sqlite3       # [linux and build_platform == target_platform]
+        - otool -L $PREFIX/bin/sqlite3  # [osx and build_platform == target_platform]
+        - ldd $PREFIX/bin/sqlite3 | grep -q libreadline       # [linux and build_platform == target_platform]
+        - otool -L $PREFIX/bin/sqlite3 | grep -q libreadline  # [osx and build_platform == target_platform]
+        # Verify DQS=3 behavior in both DML and DDL through the libsqlite dependency.
+        - 'sqlite3 -bail :memory: ''SELECT "dqs_probe"; CREATE TABLE t(x CHECK (x = "dqs_probe"));'''  # [not win]
+        - 'echo SELECT "dqs_probe"; CREATE TABLE t(x CHECK (x = "dqs_probe")); | sqlite3 -bail :memory:'  # [win]
 
 about:
   home: http://www.sqlite.org/
   license: blessing
   license_url: http://www.sqlite.org/copyright.html
-  summary: Implements a self-contained, zero-configuration, SQL database engine
+  summary: C library that implements an SQL database engine
   description: |
-    SQLite is a self-contained, high-reliability, embedded, full-featured,
-    public-domain, SQL database engine.It is the most used database engine
-    in the world.
+    SQLite is a small, fast, serverless SQL database engine. Programs that
+    link with this library get SQL database access without running a
+    separate RDBMS process.
   doc_url: http://www.sqlite.org/docs.html
-  doc_source_url: https://github.com/mackyle/sqlite/tree/master/doc
-  dev_url: https://github.com/mackyle/sqlite
+  doc_source_url: https://www.sqlite.org/src/dir?ci=trunk&name=doc
+  dev_url: https://www.sqlite.org/src/dir?ci=trunk
 
 extra:
   recipe-maintainers:
